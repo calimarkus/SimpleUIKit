@@ -1,13 +1,18 @@
 # SimpleMotionEffects
 
-This **UIView Category** provides the most simple API to create motion effects faster and in only a single line of code.
+This **UIView Category** provides a simpler API to create motion effects faster and in only a single line of code.
 
 ![Screenshot](gfx/screenshot.png)
 
 ## Installation
 
-Add the pod `pod 'SimpleMotionEffects'`,  
-or add the `UIView+SimpleMotionEffects.{h,m}` files manually to your project.
+**Cocoapods**
+
+`pod 'SimpleMotionEffects'`
+
+**Manually**
+
+Add the `UIView+SimpleMotionEffects.{h,m}` files to your project.
 
 
 ## Usage
