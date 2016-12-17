@@ -14,7 +14,6 @@ This **UIView Category** provides a simpler API to create motion effects faster 
 
 Add the `UIView+SimpleMotionEffects.{h,m}` files to your project.
 
-
 ## Usage
 
 1. Import the header `#import "UIView+SimpleMotionEffects.h"`
@@ -39,7 +38,3 @@ Or for more granular settings:
 	                        keyPath:(NSString*)keyPath
 	                       minValue:(CGFloat)minValue
 	                       maxValue:(CGFloat)maxValue;
-
-## Twitter
-
-I'm [@jaydee3](http://twitter.com/jaydee3) on Twitter.
