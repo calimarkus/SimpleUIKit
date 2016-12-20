@@ -38,7 +38,7 @@
   }];
 
   // image
-  [self.imageView addMotionEffectWithMovement:CGPointMake(150, 150)];
+  [self.imageView addMotionEffectWithMovement:CGPointMake(100, 100)];
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle
