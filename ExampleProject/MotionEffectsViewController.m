@@ -13,6 +13,15 @@
 
 @implementation MotionEffectsViewController
 
+- (instancetype)init
+{
+  self = [super init];
+  if (self) {
+    self.title = @"SimpleMotionEffects";
+  }
+  return self;
+}
+
 - (void)viewDidLoad
 {
   [super viewDidLoad];
