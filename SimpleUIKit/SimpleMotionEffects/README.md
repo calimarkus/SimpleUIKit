@@ -2,7 +2,7 @@
 
 This **UIView Category** provides a simpler API to create motion effects faster and in only a single line of code.
 
-![Screenshot](gfx/screenshot.png)
+![Screenshot](../gfx/screenshot.png)
 
 ## Installation
 
