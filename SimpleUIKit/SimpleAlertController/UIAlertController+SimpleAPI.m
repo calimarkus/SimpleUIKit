@@ -1,29 +1,10 @@
 //
 //  UIAlertController+SimpleAPI.m
-//  SimpleUIKit
+//  StillWaitin
+//
 //
 
 #import "UIAlertController+SimpleAPI.h"
-
-@interface UIAlertControllerSimpleAPIButton : NSObject
-@property (nonatomic, copy) NSString *title;
-@property (nonatomic, assign) UIAlertActionStyle style;
-@end
-@implementation UIAlertControllerSimpleAPIButton
-@end
-
-UIAlertControllerSimpleAPIButton *SAButtonWithTitle(NSString *title)
-{
-  return SAButtonWithTitleAndStyle(title, UIAlertActionStyleDefault);
-}
-
-UIAlertControllerSimpleAPIButton *SAButtonWithTitleAndStyle(NSString *title, UIAlertActionStyle style)
-{
-  UIAlertControllerSimpleAPIButton *simpleButton = [[UIAlertControllerSimpleAPIButton alloc] init];
-  simpleButton.title = title;
-  simpleButton.style = style;
-  return simpleButton;
-}
 
 @implementation UIAlertController (SimpleAPI)
 
@@ -36,7 +17,7 @@ UIAlertControllerSimpleAPIButton *SAButtonWithTitleAndStyle(NSString *title, UIA
                    preferredStyle:UIAlertControllerStyleAlert
                         withTitle:title
                           message:message
-                          buttons:@[SAButtonWithTitle(confirmationButtonTitle)]
+                          buttons:@[[SimpleAlertButton defaultButtonWithTitle:confirmationButtonTitle]]
                     buttonHandler:nil];
 }
 
@@ -44,7 +25,7 @@ UIAlertControllerSimpleAPIButton *SAButtonWithTitleAndStyle(NSString *title, UIA
                    preferredStyle:(UIAlertControllerStyle)preferredStyle
                         withTitle:(NSString *)title
                           message:(NSString *)message
-                          buttons:(NSArray<UIAlertControllerSimpleAPIButton *> *)buttons
+                          buttons:(NSArray<SimpleAlertButton *> *)buttons
                     buttonHandler:(void (^)(UIAlertAction *))buttonHandler
 {
   UIAlertController *alertController = [UIAlertController
@@ -52,14 +33,24 @@ UIAlertControllerSimpleAPIButton *SAButtonWithTitleAndStyle(NSString *title, UIA
                                         message:message
                                         preferredStyle:preferredStyle];
 
-  for (UIAlertControllerSimpleAPIButton *simpleButton in buttons) {
-    [alertController addAction:[UIAlertAction
-                                actionWithTitle:simpleButton.title
-                                style:simpleButton.style
-                                handler:buttonHandler]];
+  for (SimpleAlertButton *simpleButton in buttons) {
+    [alertController addAction:ActionForButton(simpleButton, buttonHandler)];
   }
 
   [viewController presentViewController:alertController animated:YES completion:nil];
+}
+
+static UIAlertAction *ActionForButton(SimpleAlertButton *button, void (^buttonHandler)(UIAlertAction *))
+{
+  __block UIAlertAction *action;
+  [button matchDefaultButton:^(NSString *title) {
+    action = [UIAlertAction actionWithTitle:title style:UIAlertActionStyleDefault handler:buttonHandler];
+  } cancelButton:^(NSString *title) {
+    action = [UIAlertAction actionWithTitle:title style:UIAlertActionStyleCancel handler:buttonHandler];
+  } destructiveButton:^(NSString *title) {
+    action = [UIAlertAction actionWithTitle:title style:UIAlertActionStyleDestructive handler:buttonHandler];
+  }];
+  return action;
 }
 
 @end

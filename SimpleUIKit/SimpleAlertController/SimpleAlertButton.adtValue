@@ -1,0 +1,12 @@
+
+SimpleAlertButton {
+  defaultButton {
+    NSString *title
+  }
+  cancelButton {
+    NSString *title
+  }
+  destructiveButton {
+    NSString *title
+  }
+}

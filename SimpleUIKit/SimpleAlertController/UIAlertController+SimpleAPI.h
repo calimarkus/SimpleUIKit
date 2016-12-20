@@ -1,13 +1,11 @@
 //
 //  UIAlertController+SimpleAPI.h
-//  SimpleUIKit
+//  StillWaitin
+//
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-@class UIAlertControllerSimpleAPIButton;
-
-extern UIAlertControllerSimpleAPIButton *SAButtonWithTitle(NSString *title);
-extern UIAlertControllerSimpleAPIButton *SAButtonWithTitleAndStyle(NSString *title, UIAlertActionStyle style);
+#import "SimpleAlertButton.h"
 
 @interface UIAlertController (SimpleAPI)
 
@@ -20,7 +18,7 @@ extern UIAlertControllerSimpleAPIButton *SAButtonWithTitleAndStyle(NSString *tit
                    preferredStyle:(UIAlertControllerStyle)preferredStyle
                         withTitle:(NSString *)title
                           message:(NSString *)message
-                          buttons:(NSArray<UIAlertControllerSimpleAPIButton *> *)buttons
+                          buttons:(NSArray<SimpleAlertButton *> *)buttons
                     buttonHandler:(void(^)(UIAlertAction *action))buttonHandler;
 
 @end
