@@ -4,8 +4,6 @@
 //
 
 #import "SimpleTableView.h"
-
-#import "SWColors.h"
 #import "UIView+position.h"
 
 @implementation STVSection
