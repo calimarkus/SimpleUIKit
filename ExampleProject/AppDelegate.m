@@ -3,7 +3,7 @@
 //  SimpleUIKit ExampleProject
 //
 
-#import "SMViewController.h"
+#import "MotionEffectsViewController.h"
 
 #import "AppDelegate.h"
 
@@ -12,7 +12,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-  self.window.rootViewController = [[SMViewController alloc] init];
+  self.window.rootViewController = [[MotionEffectsViewController alloc] init];
   [self.window makeKeyAndVisible];
   return YES;
 }

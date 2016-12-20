@@ -1,17 +1,17 @@
 //
-//  SMViewController.m
+//  MotionEffectsViewController.m
 //  SimpleUIKit ExampleProject
 //
 
 #import "UIView+SimpleMotionEffects.h"
 
-#import "SMViewController.h"
+#import "MotionEffectsViewController.h"
 
-@interface SMViewController ()
+@interface MotionEffectsViewController ()
 
 @end
 
-@implementation SMViewController
+@implementation MotionEffectsViewController
 
 - (void)viewDidLoad
 {
