@@ -1,6 +1,6 @@
 //
 //  SMViewController.m
-//  ExampleProject
+//  SimpleUIKit ExampleProject
 //
 
 #import "UIView+SimpleMotionEffects.h"

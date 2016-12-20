@@ -1,9 +1,6 @@
 //
 //  SMViewController.h
-//  ExampleProject
-//
-//  Created by Markus Emrich on 17.11.13.
-//  Copyright (c) 2013 Markus Emrich. All rights reserved.
+//  SimpleUIKit ExampleProject
 //
 
 #import <UIKit/UIKit.h>

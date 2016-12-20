@@ -1,18 +1,15 @@
 //
 //  main.m
-//  ExampleProject
-//
-//  Created by Markus Emrich on 17.11.13.
-//  Copyright (c) 2013 Markus Emrich. All rights reserved.
+//  SimpleUIKit ExampleProject
 //
 
 #import <UIKit/UIKit.h>
 
-#import "SMAppDelegate.h"
+#import "AppDelegate.h"
 
 int main(int argc, char * argv[])
 {
     @autoreleasepool {
-        return UIApplicationMain(argc, argv, nil, NSStringFromClass([SMAppDelegate class]));
+        return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
     }
 }

@@ -1,13 +1,13 @@
 //
-//  SMAppDelegate.m
-//  ExampleProject
+//  AppDelegate.m
+//  SimpleUIKit ExampleProject
 //
 
 #import "SMViewController.h"
 
-#import "SMAppDelegate.h"
+#import "AppDelegate.h"
 
-@implementation SMAppDelegate
+@implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
