@@ -7,19 +7,23 @@
 
 #import "MotionEffectsViewController.h"
 
-@interface MotionEffectsViewController ()
-
-@end
-
 @implementation MotionEffectsViewController
 
-- (instancetype)init
+- (void)viewWillAppear:(BOOL)animated
 {
-  self = [super init];
-  if (self) {
-    self.title = @"SimpleMotionEffects";
-  }
-  return self;
+  [super viewWillAppear:animated];
+  [self.navigationController setNavigationBarHidden:YES animated:YES];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+  [super viewWillDisappear:animated];
+  [self.navigationController setNavigationBarHidden:NO animated:YES];
+}
+
+- (IBAction)goBack:(id)sender
+{
+  [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)viewDidLoad
