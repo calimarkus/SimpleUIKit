@@ -24,7 +24,6 @@
 		D253D8021839385E00BE6C44 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D253D8011839385E00BE6C44 /* AppDelegate.m */; };
 		D253D8041839385E00BE6C44 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D253D8031839385E00BE6C44 /* Images.xcassets */; };
 		D253D8221839386900BE6C44 /* MotionEffectsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D253D8211839386900BE6C44 /* MotionEffectsViewController.m */; };
-		D253D824183938DC00BE6C44 /* MotionEffectsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D253D823183938DC00BE6C44 /* MotionEffectsViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,7 +59,6 @@
 		D253D80A1839385E00BE6C44 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		D253D8201839386900BE6C44 /* MotionEffectsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MotionEffectsViewController.h; sourceTree = "<group>"; };
 		D253D8211839386900BE6C44 /* MotionEffectsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MotionEffectsViewController.m; sourceTree = "<group>"; };
-		D253D823183938DC00BE6C44 /* MotionEffectsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MotionEffectsViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,7 +193,6 @@
 				28D927641E0907F7004CB221 /* ListViewController.m */,
 				D253D8201839386900BE6C44 /* MotionEffectsViewController.h */,
 				D253D8211839386900BE6C44 /* MotionEffectsViewController.m */,
-				D253D823183938DC00BE6C44 /* MotionEffectsViewController.xib */,
 				D253D8031839385E00BE6C44 /* Images.xcassets */,
 				D253D7F81839385E00BE6C44 /* Supporting Files */,
 			);
@@ -270,7 +267,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				28D9275A1E08FE73004CB221 /* SimpleAlertButton.adtValue in Resources */,
-				D253D824183938DC00BE6C44 /* MotionEffectsViewController.xib in Resources */,
 				D253D8041839385E00BE6C44 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
