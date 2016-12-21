@@ -8,19 +8,22 @@
   UIActivityIndicatorView *_activityIndicator;
 }
 
-+ (void)presentSimpleActivityViewOnView:(UIView *)view
-                             titleOrNil:(NSString *)titleOrNil
-                   untilBlockIsExecuted:(void(^)(void))block
++ (void)presentActivityViewOnView:(UIView *)view
+                       titleOrNil:(NSString *)titleOrNil
+                    activityBlock:(SimpleActivityViewActivityBlock)activityBlock
 {
   SimpleActivityView *simpleActivityView = [[SimpleActivityView alloc] initWithFrame:view.bounds];
-  simpleActivityView->_label.text = titleOrNil ?: NSLocalizedString(@"keySavingEntry", nil);
+  simpleActivityView->_label.text = titleOrNil;
   [view addSubview:simpleActivityView];
 
   // wait for runloop to display SimpleActivityView
-  dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-    block();
-    [simpleActivityView removeFromSuperview];
-  });
+  if (activityBlock) {
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+      activityBlock(^(){
+        [simpleActivityView removeFromSuperview];
+      });
+    });
+  }
 }
 
 - (id)initWithFrame:(CGRect)frame
