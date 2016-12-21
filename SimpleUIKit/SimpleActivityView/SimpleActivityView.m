@@ -4,33 +4,37 @@
 
 #import "SimpleActivityView.h"
 
-@implementation SimpleActivityView {
-  UIActivityIndicatorView *_activityIndicator;
+@implementation SimpleActivityView
+
++ (instancetype)activityViewWithTitle:(NSString *_Nullable)titleOrNil
+{
+  SimpleActivityView *simpleActivityView = [SimpleActivityView new];
+  [simpleActivityView setTitle:titleOrNil];
+  return simpleActivityView;
 }
 
-+ (void)presentActivityViewOnView:(UIView *)view
-                       titleOrNil:(NSString *)titleOrNil
+- (void)presentActivityViewOnView:(UIView *)view
                     activityBlock:(SimpleActivityViewActivityBlock)activityBlock
 {
-  SimpleActivityView *simpleActivityView = [[SimpleActivityView alloc] initWithFrame:view.bounds];
-  simpleActivityView->_label.text = titleOrNil;
-  [view addSubview:simpleActivityView];
+  NSParameterAssert(activityBlock);
 
-  // wait for runloop to display SimpleActivityView
-  if (activityBlock) {
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-      activityBlock(^(){
-        [simpleActivityView removeFromSuperview];
-      });
+  self.frame = view.bounds;
+  [view addSubview:self];
+
+  // wait for runloop to display the added view
+  __weak typeof(self) weakSelf = self;
+  dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0), dispatch_get_main_queue(), ^{
+    activityBlock(weakSelf, ^(){
+      [weakSelf removeFromSuperview];
     });
-  }
+  });
 }
 
 - (id)initWithFrame:(CGRect)frame
 {
   self = [super initWithFrame:frame];
   if (self != nil) {
-    self.backgroundColor = [UIColor colorWithWhite: 0 alpha: 0.8];
+    self.backgroundColor = [UIColor colorWithWhite:0 alpha:0.85];
     self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self addUI];
   }
@@ -39,43 +43,64 @@
 
 - (void)addUI
 {
-  _activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle: UIActivityIndicatorViewStyleWhite];
-  _activityIndicator.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin;
-  _activityIndicator.frame = CGRectMake(0, 0, 20, 20);
-  _activityIndicator.center = CGPointMake(0, self.frame.size.height/2.0);
-  [_activityIndicator startAnimating];
-  [self addSubview:_activityIndicator];
+  _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+  _activityIndicatorView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin;
+  [_activityIndicatorView startAnimating];
+  [self addSubview:_activityIndicatorView];
 
   _label = [[UILabel alloc] init];
   _label.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin;
-  _label.center = CGPointMake(0, self.frame.size.height/2.0);
   _label.font = [UIFont boldSystemFontOfSize:[UIFont systemFontSize]];
   _label.backgroundColor = [UIColor clearColor];
   _label.textAlignment = NSTextAlignmentLeft;
   _label.textColor = [UIColor whiteColor];
-  _label.shadowColor = [UIColor blackColor];
-  _label.shadowOffset = CGSizeMake(-1, -1);
   [self addSubview: _label];
+}
+
+- (NSString *)title
+{
+  return _label.text;
+}
+
+- (void)setTitle:(NSString *_Nullable)title
+{
+  _label.text = title;
+  [self setNeedsLayout];
+}
+
+- (UIActivityIndicatorViewStyle)activityIndicatorViewStyle
+{
+  return _activityIndicatorView.activityIndicatorViewStyle;
+}
+
+- (void)setActivityIndicatorViewStyle:(UIActivityIndicatorViewStyle)activityIndicatorViewStyle
+{
+  _activityIndicatorView.activityIndicatorViewStyle = activityIndicatorViewStyle;
+  [self setNeedsLayout];
 }
 
 - (void)layoutSubviews;
 {
   [super layoutSubviews];
 
+  [_label sizeToFit];
+  [_activityIndicatorView sizeToFit];
+
+  // center vertically
+  _label.center = CGPointMake(0, self.bounds.size.height/2.0);
+  _activityIndicatorView.center = CGPointMake(0, self.bounds.size.height/2.0);
+
   // Center String and ActivityView
-  CGSize size = [_label.text sizeWithAttributes:@{NSFontAttributeName:_label.font}];
-  int totalwidth = _activityIndicator.frame.size.width + 15 + size.width;
+  const CGFloat margin = 15;
+  const CGFloat totalWidth = _activityIndicatorView.frame.size.width + margin + _label.frame.size.width;
 
-  CGRect newframe = _activityIndicator.frame;
-  newframe.origin.x = (self.frame.size.width-totalwidth)/2;
-  _activityIndicator.frame = newframe;
+  CGRect newFrame = _activityIndicatorView.frame;
+  newFrame.origin.x = (self.frame.size.width-totalWidth)/2;
+  _activityIndicatorView.frame = newFrame;
 
-  newframe = _label.frame;
-  newframe.size.width = size.width;
-  newframe.size.height = size.height;
-  newframe.origin.x = _activityIndicator.frame.origin.x + _activityIndicator.frame.size.width + 15;
-  newframe.origin.y -= newframe.size.height/2 + 1;
-  _label.frame = newframe;
+  newFrame = _label.frame;
+  newFrame.origin.x = _activityIndicatorView.frame.origin.x + _activityIndicatorView.frame.size.width + margin;
+  _label.frame = newFrame;
 }
 
 @end

@@ -2,15 +2,19 @@
 //  SimpleActivityView.h
 //  SimpleUIKit
 
+@class SimpleActivityView;
+
 typedef void(^SimpleActivityViewDismissBlock)(void);
-typedef void(^SimpleActivityViewActivityBlock)(__nonnull SimpleActivityViewDismissBlock dismissBlock);
+typedef void(^SimpleActivityViewActivityBlock)(SimpleActivityView *_Nonnull simpleActivityView, SimpleActivityViewDismissBlock _Nonnull dismissBlock);
 
 @interface SimpleActivityView : UIView
 
 @property (nonatomic, readonly) UILabel *_Nonnull label;
+@property (nonatomic, readonly) UIActivityIndicatorView *_Nonnull activityIndicatorView;
 
-+ (void)presentActivityViewOnView:(UIView *_Nonnull)view
-                       titleOrNil:(NSString *_Nullable)titleOrNil
++ (instancetype _Nonnull)activityViewWithTitle:(NSString *_Nullable)titleOrNil;
+
+- (void)presentActivityViewOnView:(UIView *_Nonnull)view
                     activityBlock:(SimpleActivityViewActivityBlock _Nonnull)activityBlock;
 
 @end

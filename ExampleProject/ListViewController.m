@@ -5,10 +5,11 @@
 
 #import "ListViewController.h"
 
+#import "ActivityViewController.h"
 #import "MotionEffectsViewController.h"
 #import "SimpleTableView.h"
 
-NSString *const ReuseIdentifier = @"ReuseIdentifier";
+NSString *const ListReuseIdentifier = @"ListReuseIdentifier";
 
 @implementation ListViewController {
   SimpleTableView *_simpleTableView;
@@ -26,7 +27,7 @@ NSString *const ReuseIdentifier = @"ReuseIdentifier";
 - (void)loadView
 {
   SimpleTableView *simpleTableView = [[SimpleTableView alloc] initWithTableViewStyle:UITableViewStyleGrouped];
-  [simpleTableView.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:ReuseIdentifier];
+  [simpleTableView.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:ListReuseIdentifier];
   simpleTableView.sectionModels = [self _createSections];
   _simpleTableView = simpleTableView;
 
@@ -38,12 +39,20 @@ NSString *const ReuseIdentifier = @"ReuseIdentifier";
   __weak typeof(self) weakSelf = self;
   return @[[STVSection sectionWithTitle:@"Projects" rows:
             @[[STVRow
-               rowWithCellReuseIdentifier:ReuseIdentifier
+               rowWithCellReuseIdentifier:ListReuseIdentifier
                title:@"SimpleMotionEffects"
                subtitle:nil
                configureCellBlock:nil
                didSelectBlock:^(STVRow *STVRow, UITableViewCell *cell, UITableView *tableView, NSIndexPath *indexPath) {
                  [weakSelf.navigationController pushViewController:[MotionEffectsViewController new] animated:YES];
+               }],
+              [STVRow
+               rowWithCellReuseIdentifier:ListReuseIdentifier
+               title:@"SimpleActivityView"
+               subtitle:nil
+               configureCellBlock:nil
+               didSelectBlock:^(STVRow *STVRow, UITableViewCell *cell, UITableView *tableView, NSIndexPath *indexPath) {
+                 [weakSelf.navigationController pushViewController:[ActivityViewController new] animated:YES];
                }]]]];
 }
 
