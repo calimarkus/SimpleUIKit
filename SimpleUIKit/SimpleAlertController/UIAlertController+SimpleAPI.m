@@ -1,6 +1,6 @@
 //
 //  UIAlertController+SimpleAPI.m
-//  StillWaitin
+//  SimpleUIKit ExampleProject
 //
 //
 

@@ -1,6 +1,6 @@
 //
 //  UIAlertController+SimpleAPI.h
-//  StillWaitin
+//  SimpleUIKit ExampleProject
 //
 
 #import <UIKit/UIKit.h>
