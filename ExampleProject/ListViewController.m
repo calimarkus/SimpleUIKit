@@ -8,6 +8,7 @@
 #import "ActivityViewController.h"
 #import "AlertViewController.h"
 #import "AttributedStringViewController.h"
+#import "LocalNotificationViewController.h"
 #import "MotionEffectsViewController.h"
 #import "SimpleTableView.h"
 
@@ -70,7 +71,7 @@ NSString *const ListReuseIdentifier = @"ListReuseIdentifier";
                subtitle:nil
                configureCellBlock:nil
                didSelectBlock:^(STVRow *STVRow, UITableViewCell *cell, UITableView *tableView, NSIndexPath *indexPath) {
-                 //
+                 [weakSelf.navigationController pushViewController:[LocalNotificationViewController new] animated:YES];
                }],
               [STVRow
                rowWithCellReuseIdentifier:ListReuseIdentifier
