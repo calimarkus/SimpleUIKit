@@ -11,13 +11,14 @@
 		28D9275A1E08FE73004CB221 /* SimpleAlertButton.adtValue in Resources */ = {isa = PBXBuildFile; fileRef = 28D927441E08FE73004CB221 /* SimpleAlertButton.adtValue */; };
 		28D9275B1E08FE73004CB221 /* SimpleAlertButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D927461E08FE73004CB221 /* SimpleAlertButton.m */; };
 		28D9275C1E08FE73004CB221 /* UIAlertController+SimpleAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D927481E08FE73004CB221 /* UIAlertController+SimpleAPI.m */; };
-		28D9275D1E08FE73004CB221 /* NSAttributedString+StillWaitin.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D9274B1E08FE73004CB221 /* NSAttributedString+StillWaitin.m */; };
+		28D9275D1E08FE73004CB221 /* NSAttributedString+SimpleUIKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D9274B1E08FE73004CB221 /* NSAttributedString+SimpleUIKit.m */; };
 		28D9275E1E08FE73004CB221 /* SimpleLocalNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D9274E1E08FE73004CB221 /* SimpleLocalNotification.m */; };
 		28D927601E08FE73004CB221 /* UIView+SimpleMotionEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D927521E08FE73004CB221 /* UIView+SimpleMotionEffects.m */; };
 		28D927611E08FE73004CB221 /* UIView+position.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D927551E08FE73004CB221 /* UIView+position.m */; };
 		28D927621E08FE73004CB221 /* SimpleTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D927581E08FE73004CB221 /* SimpleTableView.m */; };
 		28D927651E0907F7004CB221 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D927641E0907F7004CB221 /* ListViewController.m */; };
 		28D927681E0A525A004CB221 /* ActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D927671E0A525A004CB221 /* ActivityViewController.m */; };
+		28D9276B1E0B552A004CB221 /* AttributedStringViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D9276A1E0B552A004CB221 /* AttributedStringViewController.m */; };
 		D253D7F21839385E00BE6C44 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D253D7F11839385E00BE6C44 /* Foundation.framework */; };
 		D253D7F41839385E00BE6C44 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D253D7F31839385E00BE6C44 /* CoreGraphics.framework */; };
 		D253D7F61839385E00BE6C44 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D253D7F51839385E00BE6C44 /* UIKit.framework */; };
@@ -35,8 +36,8 @@
 		28D927461E08FE73004CB221 /* SimpleAlertButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleAlertButton.m; sourceTree = "<group>"; };
 		28D927471E08FE73004CB221 /* UIAlertController+SimpleAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+SimpleAPI.h"; sourceTree = "<group>"; };
 		28D927481E08FE73004CB221 /* UIAlertController+SimpleAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+SimpleAPI.m"; sourceTree = "<group>"; };
-		28D9274A1E08FE73004CB221 /* NSAttributedString+StillWaitin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+StillWaitin.h"; sourceTree = "<group>"; };
-		28D9274B1E08FE73004CB221 /* NSAttributedString+StillWaitin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+StillWaitin.m"; sourceTree = "<group>"; };
+		28D9274A1E08FE73004CB221 /* NSAttributedString+SimpleUIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+SimpleUIKit.h"; sourceTree = "<group>"; };
+		28D9274B1E08FE73004CB221 /* NSAttributedString+SimpleUIKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+SimpleUIKit.m"; sourceTree = "<group>"; };
 		28D9274D1E08FE73004CB221 /* SimpleLocalNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleLocalNotification.h; sourceTree = "<group>"; };
 		28D9274E1E08FE73004CB221 /* SimpleLocalNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleLocalNotification.m; sourceTree = "<group>"; };
 		28D927511E08FE73004CB221 /* UIView+SimpleMotionEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SimpleMotionEffects.h"; sourceTree = "<group>"; };
@@ -49,6 +50,8 @@
 		28D927641E0907F7004CB221 /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
 		28D927661E0A525A004CB221 /* ActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityViewController.h; sourceTree = "<group>"; };
 		28D927671E0A525A004CB221 /* ActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityViewController.m; sourceTree = "<group>"; };
+		28D927691E0B552A004CB221 /* AttributedStringViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributedStringViewController.h; sourceTree = "<group>"; };
+		28D9276A1E0B552A004CB221 /* AttributedStringViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributedStringViewController.m; sourceTree = "<group>"; };
 		D253D7EE1839385E00BE6C44 /* ExampleProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExampleProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D253D7F11839385E00BE6C44 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D253D7F31839385E00BE6C44 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -116,8 +119,8 @@
 		28D927491E08FE73004CB221 /* SimpleAttributedString */ = {
 			isa = PBXGroup;
 			children = (
-				28D9274A1E08FE73004CB221 /* NSAttributedString+StillWaitin.h */,
-				28D9274B1E08FE73004CB221 /* NSAttributedString+StillWaitin.m */,
+				28D9274A1E08FE73004CB221 /* NSAttributedString+SimpleUIKit.h */,
+				28D9274B1E08FE73004CB221 /* NSAttributedString+SimpleUIKit.m */,
 			);
 			path = SimpleAttributedString;
 			sourceTree = "<group>";
@@ -194,6 +197,8 @@
 				D253D8011839385E00BE6C44 /* AppDelegate.m */,
 				28D927661E0A525A004CB221 /* ActivityViewController.h */,
 				28D927671E0A525A004CB221 /* ActivityViewController.m */,
+				28D927691E0B552A004CB221 /* AttributedStringViewController.h */,
+				28D9276A1E0B552A004CB221 /* AttributedStringViewController.m */,
 				28D927631E0907F7004CB221 /* ListViewController.h */,
 				28D927641E0907F7004CB221 /* ListViewController.m */,
 				D253D8201839386900BE6C44 /* MotionEffectsViewController.h */,
@@ -293,9 +298,10 @@
 				28D927611E08FE73004CB221 /* UIView+position.m in Sources */,
 				28D9275C1E08FE73004CB221 /* UIAlertController+SimpleAPI.m in Sources */,
 				28D927681E0A525A004CB221 /* ActivityViewController.m in Sources */,
+				28D9276B1E0B552A004CB221 /* AttributedStringViewController.m in Sources */,
 				D253D7FE1839385E00BE6C44 /* main.m in Sources */,
 				28D9275B1E08FE73004CB221 /* SimpleAlertButton.m in Sources */,
-				28D9275D1E08FE73004CB221 /* NSAttributedString+StillWaitin.m in Sources */,
+				28D9275D1E08FE73004CB221 /* NSAttributedString+SimpleUIKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
