@@ -19,6 +19,7 @@
 		28D927651E0907F7004CB221 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D927641E0907F7004CB221 /* ListViewController.m */; };
 		28D927681E0A525A004CB221 /* ActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D927671E0A525A004CB221 /* ActivityViewController.m */; };
 		28D9276B1E0B552A004CB221 /* AttributedStringViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D9276A1E0B552A004CB221 /* AttributedStringViewController.m */; };
+		28D9276E1E0B6DDE004CB221 /* AlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D9276D1E0B6DDE004CB221 /* AlertViewController.m */; };
 		D253D7F21839385E00BE6C44 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D253D7F11839385E00BE6C44 /* Foundation.framework */; };
 		D253D7F41839385E00BE6C44 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D253D7F31839385E00BE6C44 /* CoreGraphics.framework */; };
 		D253D7F61839385E00BE6C44 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D253D7F51839385E00BE6C44 /* UIKit.framework */; };
@@ -52,6 +53,8 @@
 		28D927671E0A525A004CB221 /* ActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityViewController.m; sourceTree = "<group>"; };
 		28D927691E0B552A004CB221 /* AttributedStringViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributedStringViewController.h; sourceTree = "<group>"; };
 		28D9276A1E0B552A004CB221 /* AttributedStringViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributedStringViewController.m; sourceTree = "<group>"; };
+		28D9276C1E0B6DDE004CB221 /* AlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertViewController.h; sourceTree = "<group>"; };
+		28D9276D1E0B6DDE004CB221 /* AlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertViewController.m; sourceTree = "<group>"; };
 		D253D7EE1839385E00BE6C44 /* ExampleProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExampleProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D253D7F11839385E00BE6C44 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D253D7F31839385E00BE6C44 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -197,6 +200,8 @@
 				D253D8011839385E00BE6C44 /* AppDelegate.m */,
 				28D927661E0A525A004CB221 /* ActivityViewController.h */,
 				28D927671E0A525A004CB221 /* ActivityViewController.m */,
+				28D9276C1E0B6DDE004CB221 /* AlertViewController.h */,
+				28D9276D1E0B6DDE004CB221 /* AlertViewController.m */,
 				28D927691E0B552A004CB221 /* AttributedStringViewController.h */,
 				28D9276A1E0B552A004CB221 /* AttributedStringViewController.m */,
 				28D927631E0907F7004CB221 /* ListViewController.h */,
@@ -299,6 +304,7 @@
 				28D9275C1E08FE73004CB221 /* UIAlertController+SimpleAPI.m in Sources */,
 				28D927681E0A525A004CB221 /* ActivityViewController.m in Sources */,
 				28D9276B1E0B552A004CB221 /* AttributedStringViewController.m in Sources */,
+				28D9276E1E0B6DDE004CB221 /* AlertViewController.m in Sources */,
 				D253D7FE1839385E00BE6C44 /* main.m in Sources */,
 				28D9275B1E08FE73004CB221 /* SimpleAlertButton.m in Sources */,
 				28D9275D1E08FE73004CB221 /* NSAttributedString+SimpleUIKit.m in Sources */,
