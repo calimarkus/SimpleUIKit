@@ -5,8 +5,6 @@
 
 #import "SimpleTableView.h"
 
-#import "UIView+SimplePositioning.h"
-
 @implementation STVSection
 + (instancetype)sectionWithTitle:(NSString *)title
                             rows:(NSArray<STVRow *> *)rows
