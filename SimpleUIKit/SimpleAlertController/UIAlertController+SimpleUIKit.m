@@ -1,10 +1,10 @@
 //
-//  UIAlertController+SimpleAPI.m
+//  UIAlertController+SimpleUIKit.m
 //  SimpleUIKit ExampleProject
 //
 //
 
-#import "UIAlertController+SimpleAPI.h"
+#import "UIAlertController+SimpleUIKit.h"
 
 @implementation UIAlertController (SimpleAPI)
 

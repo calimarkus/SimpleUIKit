@@ -7,7 +7,7 @@
 
 #import "SimpleLocalNotification.h"
 #import "SimpleTableView.h"
-#import "UIAlertController+SimpleAPI.h"
+#import "UIAlertController+SimpleUIKit.h"
 
 NSString *const LocalNotifReuseIdentifier = @"LocalNotifReuseIdentifier";
 

@@ -11,7 +11,7 @@
 		28D927591E08FE73004CB221 /* SimpleActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D927421E08FE73004CB221 /* SimpleActivityView.m */; };
 		28D9275A1E08FE73004CB221 /* SimpleAlertButton.adtValue in Resources */ = {isa = PBXBuildFile; fileRef = 28D927441E08FE73004CB221 /* SimpleAlertButton.adtValue */; };
 		28D9275B1E08FE73004CB221 /* SimpleAlertButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D927461E08FE73004CB221 /* SimpleAlertButton.m */; };
-		28D9275C1E08FE73004CB221 /* UIAlertController+SimpleAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D927481E08FE73004CB221 /* UIAlertController+SimpleAPI.m */; };
+		28D9275C1E08FE73004CB221 /* UIAlertController+SimpleUIKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D927481E08FE73004CB221 /* UIAlertController+SimpleUIKit.m */; };
 		28D9275D1E08FE73004CB221 /* NSAttributedString+SimpleUIKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D9274B1E08FE73004CB221 /* NSAttributedString+SimpleUIKit.m */; };
 		28D9275E1E08FE73004CB221 /* SimpleLocalNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D9274E1E08FE73004CB221 /* SimpleLocalNotification.m */; };
 		28D927601E08FE73004CB221 /* UIView+SimpleMotionEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D927521E08FE73004CB221 /* UIView+SimpleMotionEffects.m */; };
@@ -38,8 +38,8 @@
 		28D927441E08FE73004CB221 /* SimpleAlertButton.adtValue */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SimpleAlertButton.adtValue; sourceTree = "<group>"; };
 		28D927451E08FE73004CB221 /* SimpleAlertButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleAlertButton.h; sourceTree = "<group>"; };
 		28D927461E08FE73004CB221 /* SimpleAlertButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleAlertButton.m; sourceTree = "<group>"; };
-		28D927471E08FE73004CB221 /* UIAlertController+SimpleAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+SimpleAPI.h"; sourceTree = "<group>"; };
-		28D927481E08FE73004CB221 /* UIAlertController+SimpleAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+SimpleAPI.m"; sourceTree = "<group>"; };
+		28D927471E08FE73004CB221 /* UIAlertController+SimpleUIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+SimpleUIKit.h"; sourceTree = "<group>"; };
+		28D927481E08FE73004CB221 /* UIAlertController+SimpleUIKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+SimpleUIKit.m"; sourceTree = "<group>"; };
 		28D9274A1E08FE73004CB221 /* NSAttributedString+SimpleUIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+SimpleUIKit.h"; sourceTree = "<group>"; };
 		28D9274B1E08FE73004CB221 /* NSAttributedString+SimpleUIKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+SimpleUIKit.m"; sourceTree = "<group>"; };
 		28D9274D1E08FE73004CB221 /* SimpleLocalNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleLocalNotification.h; sourceTree = "<group>"; };
@@ -116,8 +116,8 @@
 				28D927441E08FE73004CB221 /* SimpleAlertButton.adtValue */,
 				28D927451E08FE73004CB221 /* SimpleAlertButton.h */,
 				28D927461E08FE73004CB221 /* SimpleAlertButton.m */,
-				28D927471E08FE73004CB221 /* UIAlertController+SimpleAPI.h */,
-				28D927481E08FE73004CB221 /* UIAlertController+SimpleAPI.m */,
+				28D927471E08FE73004CB221 /* UIAlertController+SimpleUIKit.h */,
+				28D927481E08FE73004CB221 /* UIAlertController+SimpleUIKit.m */,
 			);
 			path = SimpleAlertController;
 			sourceTree = "<group>";
@@ -306,7 +306,7 @@
 				D253D8221839386900BE6C44 /* MotionEffectsViewController.m in Sources */,
 				28D927621E08FE73004CB221 /* SimpleTableView.m in Sources */,
 				28D927711E0C4B9A004CB221 /* LocalNotificationViewController.m in Sources */,
-				28D9275C1E08FE73004CB221 /* UIAlertController+SimpleAPI.m in Sources */,
+				28D9275C1E08FE73004CB221 /* UIAlertController+SimpleUIKit.m in Sources */,
 				28D927681E0A525A004CB221 /* ActivityViewController.m in Sources */,
 				28D9276B1E0B552A004CB221 /* AttributedStringViewController.m in Sources */,
 				28D9276E1E0B6DDE004CB221 /* AlertViewController.m in Sources */,

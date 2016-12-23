@@ -1,5 +1,5 @@
 //
-//  UIAlertController+SimpleAPI.h
+//  UIAlertController+SimpleUIKit.h
 //  SimpleUIKit ExampleProject
 //
 

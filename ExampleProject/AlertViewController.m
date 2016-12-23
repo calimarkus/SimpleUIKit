@@ -5,7 +5,7 @@
 
 #import "AlertViewController.h"
 
-#import "UIAlertController+SimpleAPI.h"
+#import "UIAlertController+SimpleUIKit.h"
 #import "SimpleTableView.h"
 
 NSString *const AlertReuseIdentifier = @"AlertReuseIdentifier";
