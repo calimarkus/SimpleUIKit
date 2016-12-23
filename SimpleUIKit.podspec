@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   s.homepage     = "https://github.com/calimarkus/SimpleUIKit"
   s.license      = { :type => 'MIT' }
   s.author       = { "Markus Emrich" => "markus.emrich@gmail.com" }
-  s.platform     = :ios
+  s.platform     = :ios, '8.0'
   s.source       = { :git => "https://github.com/calimarkus/SimpleUIKit.git", :tag => "#{s.version}" }
 
   s.subspec 'SimpleActivityView' do |activity|
