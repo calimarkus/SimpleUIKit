@@ -4,12 +4,10 @@ Pod::Spec.new do |s|
   s.version      = "1.0.1"
   s.summary      = "This is a collection of a few UIKit API's simplified."
   s.description  = "This simplifies the usage for various UIKit classes. See the subpods description"
-
   s.homepage     = "https://github.com/calimarkus/SimpleUIKit"
   s.license      = { :type => 'MIT' }
   s.author       = { "Markus Emrich" => "markus.emrich@gmail.com" }
   s.platform     = :ios
-
   s.source       = { :git => "https://github.com/calimarkus/SimpleUIKit.git", :tag => "#{s.version}" }
 
   s.subspec 'SimpleActivityView' do |activity|
@@ -28,8 +26,8 @@ Pod::Spec.new do |s|
     local.source_files  = 'SimpleUIKit/SimpleLocalNotification/*.{h,m}'
   end
 
-  s.subspec 'SimpleUIKit' do |motion|
-    motion.source_files  = 'SimpleUIKit/SimpleUIKit/*.{h,m}'
+  s.subspec 'SimpleMotionEffects' do |motion|
+    motion.source_files  = 'SimpleUIKit/SimpleMotionEffects/*.{h,m}'
   end
 
   s.subspec 'SimplePositioning' do |positioning|
