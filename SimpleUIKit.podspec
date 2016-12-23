@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "SimpleUIKit"
-  s.version      = "1.0.1"
+  s.version      = "1.0.2"
   s.summary      = "This is a collection of a few UIKit API's simplified."
   s.description  = "This simplifies the usage for various UIKit classes. See the subpods description"
   s.homepage     = "https://github.com/calimarkus/SimpleUIKit"
