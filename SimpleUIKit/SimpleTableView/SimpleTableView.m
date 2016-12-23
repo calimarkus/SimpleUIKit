@@ -4,7 +4,8 @@
 //
 
 #import "SimpleTableView.h"
-#import "UIView+position.h"
+
+#import "UIView+SimplePositioning.h"
 
 @implementation STVSection
 + (instancetype)sectionWithTitle:(NSString *)title

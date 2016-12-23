@@ -6,7 +6,7 @@
 #import "UIView+SimpleMotionEffects.h"
 
 #import "MotionEffectsViewController.h"
-#import "UIView+position.h"
+#import "UIView+SimplePositioning.h"
 
 @implementation MotionEffectsViewController
 

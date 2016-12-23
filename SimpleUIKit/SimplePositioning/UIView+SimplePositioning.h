@@ -1,10 +1,10 @@
 //
-//  UIView+position.h
+//  UIView+SimplePositioning.h
 //
 
 #import <UIKit/UIKit.h>
 
-@interface UIView (position)
+@interface UIView (SimplePositioning)
 
 @property (nonatomic) CGPoint frameOrigin;
 @property (nonatomic) CGSize frameSize;

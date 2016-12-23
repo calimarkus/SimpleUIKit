@@ -1,11 +1,10 @@
 //
-//  UIView+position.m
+//  UIView+SimplePositioning.m
 //
 
-#import "UIView+position.h"
+#import "UIView+SimplePositioning.h"
 
-
-@implementation UIView (position)
+@implementation UIView (SimplePositioning)
 
 - (CGPoint)frameOrigin {
   return self.frame.origin;
