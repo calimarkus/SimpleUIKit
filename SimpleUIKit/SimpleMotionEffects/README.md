@@ -2,7 +2,7 @@
 
 This **UIView Category** provides a simpler API to create motion effects faster and in only a single line of code.
 
-![Screenshot](../gfx/SimpleMotionEffects.png)
+![Screenshot](https://raw.githubusercontent.com/calimarkus/SimpleUIKit/master/gfx/SimpleMotionEffects.png)
 
 ## Installation
 
@@ -21,20 +21,26 @@ Add the `UIView+SimpleMotionEffects.{h,m}` files to your project.
 
 Just specify how much a view should move at maximum on both axes, when tilting:
 
-	- (void)addMotionEffectWithMovement:(CGPoint)movement;
+```objective-c
+- (void)addMotionEffectWithMovement:(CGPoint)movement;
+```
 	
 Or specify, how much a view should move on both axes reacting to horizontalTilt oder verticalTilt only:
 	
-	- (void)addMotionEffectOnHorizontalTilt:(CGPoint)horizontalMovement
-	                         onVerticalTilt:(CGPoint)verticalMovement;
+```objective-c
+- (void)addMotionEffectOnHorizontalTilt:(CGPoint)horizontalMovement
+	                     onVerticalTilt:(CGPoint)verticalMovement;
+```
 
 Or for more granular settings:
 
-	- (void)addMotionEffectWithType:(UIInterpolatingMotionEffectType)type
-	                        keyPath:(NSString*)keyPath
-	                          value:(CGFloat)value;
+```objective-c
+- (void)addMotionEffectWithType:(UIInterpolatingMotionEffectType)type
+	                    keyPath:(NSString*)keyPath
+	                      value:(CGFloat)value;
 	
-	- (void)addMotionEffectWithType:(UIInterpolatingMotionEffectType)type
-	                        keyPath:(NSString*)keyPath
-	                       minValue:(CGFloat)minValue
-	                       maxValue:(CGFloat)maxValue;
+- (void)addMotionEffectWithType:(UIInterpolatingMotionEffectType)type
+	                    keyPath:(NSString*)keyPath
+	                   minValue:(CGFloat)minValue
+	                   maxValue:(CGFloat)maxValue;
+```

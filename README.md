@@ -3,6 +3,8 @@
 This is a collection of a few UIKit API's simplified. 
 Also see the includled Example Project on how to use all the APIs.
 
+![Screenshots](https://raw.githubusercontent.com/calimarkus/SimpleUIKit/master/gfx/screenshots.png "Screenshots")
+
 ## SimpleActivityView
 
 A simple to use, easy to customize activity view. Example:
@@ -69,6 +71,8 @@ A simplified API to add motion effects to your views. Example:
 ```objective-c
 [view addMotionEffectWithMovement:CGPointMake(100, 100)];
 ```
+
+[Read more](SimpleUIKit/SimpleMotionEffects/)
 
 ## SimpleAttributedString
 
