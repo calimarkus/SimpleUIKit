@@ -29,7 +29,7 @@
   completionHandler(UNNotificationPresentationOptionAlert);
 }
 
-- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void(^)())completionHandler
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void(^)(void))completionHandler
 {
   [UIAlertController presentFromViewController:self.window.rootViewController
                                      withTitle:@"Received Local Notifcation"
