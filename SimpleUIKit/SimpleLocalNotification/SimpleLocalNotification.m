@@ -21,39 +21,43 @@
 
 - (void)isRegisteredForLocalNotificationsWithCompletion:(void(^)(BOOL userDidAllowAlerts, UNNotificationSettings *settings))completion
 {
-  if (completion) {
-    [[UNUserNotificationCenter currentNotificationCenter] getNotificationSettingsWithCompletionHandler:^(UNNotificationSettings *settings) {
-      completion(settings.authorizationStatus == UNAuthorizationStatusAuthorized &&
-                 settings.alertSetting == UNNotificationSettingEnabled,
-                 settings);
-    }];
+  if (@available(iOS 10.0, *)) {
+    if (completion) {
+      [[UNUserNotificationCenter currentNotificationCenter] getNotificationSettingsWithCompletionHandler:^(UNNotificationSettings *settings) {
+        completion(settings.authorizationStatus == UNAuthorizationStatusAuthorized &&
+                   settings.alertSetting == UNNotificationSettingEnabled,
+                   settings);
+      }];
+    }
   }
 }
 
 - (void)registerForLocalNotificationsIfNeededWithCompletion:(void(^)(BOOL granted, NSError *error))completion
 {
-  [self isRegisteredForLocalNotificationsWithCompletion:^(BOOL userDidAllowAlerts, UNNotificationSettings *settings) {
-    if (!userDidAllowAlerts) {
-      [[UNUserNotificationCenter currentNotificationCenter]
-       requestAuthorizationWithOptions:UNAuthorizationOptionAlert
-       completionHandler:^(BOOL granted, NSError *error) {
-         if (completion) {
-           dispatch_async(dispatch_get_main_queue(), ^{
-             completion(granted, error);
-           });
-         }
-         if (!granted) {
-           [self.delegate simpleLocalNotificationAccessWasDenied:self];
-         }
-       }];
-    } else {
-      if (completion) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-          completion(YES, nil);
-        });
+  if (@available(iOS 10.0, *)) {
+    [self isRegisteredForLocalNotificationsWithCompletion:^(BOOL userDidAllowAlerts, UNNotificationSettings *settings) {
+      if (!userDidAllowAlerts) {
+        [[UNUserNotificationCenter currentNotificationCenter]
+         requestAuthorizationWithOptions:UNAuthorizationOptionAlert
+         completionHandler:^(BOOL granted, NSError *error) {
+           if (completion) {
+             dispatch_async(dispatch_get_main_queue(), ^{
+               completion(granted, error);
+             });
+           }
+           if (!granted) {
+             [self.delegate simpleLocalNotificationAccessWasDenied:self];
+           }
+         }];
+      } else {
+        if (completion) {
+          dispatch_async(dispatch_get_main_queue(), ^{
+            completion(YES, nil);
+          });
+        }
       }
-    }
-  }];
+    }];
+  }
 }
 
 - (void)scheduleLocalNotificationWithAlertBody:(NSString*)alertBody
@@ -63,39 +67,43 @@
 {
   NSParameterAssert(timeIntervalFromNow > 0);
 
-  [self registerForLocalNotificationsIfNeededWithCompletion:^(BOOL granted, NSError *registerError) {
-    if (granted) {
-      UNMutableNotificationContent *content = [UNMutableNotificationContent new];
-      content.body = alertBody;
+  if (@available(iOS 10.0, *)) {
+    [self registerForLocalNotificationsIfNeededWithCompletion:^(BOOL granted, NSError *registerError) {
+      if (granted) {
+        UNMutableNotificationContent *content = [UNMutableNotificationContent new];
+        content.body = alertBody;
 
-      UNNotificationRequest *request = [UNNotificationRequest
-                                        requestWithIdentifier:uniqueIdentifier
-                                        content:content
-                                        trigger:[UNTimeIntervalNotificationTrigger
-                                                 triggerWithTimeInterval:timeIntervalFromNow
-                                                 repeats:NO]];
+        UNNotificationRequest *request = [UNNotificationRequest
+                                          requestWithIdentifier:uniqueIdentifier
+                                          content:content
+                                          trigger:[UNTimeIntervalNotificationTrigger
+                                                   triggerWithTimeInterval:timeIntervalFromNow
+                                                   repeats:NO]];
 
-      [[UNUserNotificationCenter currentNotificationCenter]
-       addNotificationRequest:request
-       withCompletionHandler:^(NSError *addError) {
-         if (completion) {
-           dispatch_async(dispatch_get_main_queue(), ^{
-             completion(addError);
-           });
-         }
-       }];
-    } else {
-      if (completion) {
-        completion(registerError);
+        [[UNUserNotificationCenter currentNotificationCenter]
+         addNotificationRequest:request
+         withCompletionHandler:^(NSError *addError) {
+           if (completion) {
+             dispatch_async(dispatch_get_main_queue(), ^{
+               completion(addError);
+             });
+           }
+         }];
+      } else {
+        if (completion) {
+          completion(registerError);
+        }
       }
-    }
-  }];
+    }];
+  }
 }
 
 - (void)cancelScheduledLocalNotificationsMatchingUniqueIdentifier:(NSString *)uniqueIdentifier
 {
-  [[UNUserNotificationCenter currentNotificationCenter]
-   removePendingNotificationRequestsWithIdentifiers:@[uniqueIdentifier]];
+  if (@available(iOS 10.0, *)) {
+    [[UNUserNotificationCenter currentNotificationCenter]
+     removePendingNotificationRequestsWithIdentifiers:@[uniqueIdentifier]];
+  }
 }
 
 @end
