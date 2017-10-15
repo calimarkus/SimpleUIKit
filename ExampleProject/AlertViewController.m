@@ -94,7 +94,7 @@ NSString *const AlertReuseIdentifier = @"AlertReuseIdentifier";
                }],
               [STVRow
                rowWithCellReuseIdentifier:AlertReuseIdentifier
-               title:@"Show a confirmation alert"
+               title:@"Show a confirmation ActionSheet"
                subtitle:nil
                configureCellBlock:nil
                didSelectBlock:^(STVRow *STVRow, UITableViewCell *cell, UITableView *tableView, NSIndexPath *indexPath) {

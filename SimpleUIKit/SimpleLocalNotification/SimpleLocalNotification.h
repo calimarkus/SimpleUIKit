@@ -12,6 +12,7 @@
 - (void)simpleLocalNotificationAccessWasDenied:(SimpleLocalNotification *)simpleLocalNotification;
 @end
 
+__IOS_AVAILABLE(10.0)
 @interface SimpleLocalNotification : NSObject
 
 @property (nonatomic, weak) id<SimpleLocalNotificationDelegate> delegate;

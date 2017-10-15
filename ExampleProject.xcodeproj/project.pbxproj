@@ -427,6 +427,10 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = de.markusemrich.simpleUIKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WARNING_CFLAGS = (
+					"-Wshorten-64-to-32",
+					"-Wunguarded-availability",
+				);
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -443,6 +447,10 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = de.markusemrich.simpleUIKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WARNING_CFLAGS = (
+					"-Wshorten-64-to-32",
+					"-Wunguarded-availability",
+				);
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
