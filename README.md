@@ -15,7 +15,6 @@ presentActivityViewOnView:view
 activityBlock:^(SimpleActivityView *activityView, SimpleActivityViewDismissBlock dismissBlock) {
   // do something that takes a while
   dismissBlock(); // call to dismiss the view again
-});
 }];
 ```
 
@@ -24,11 +23,10 @@ activityBlock:^(SimpleActivityView *activityView, SimpleActivityViewDismissBlock
 A simplified API to schedule local notifications. Example:
 
 ```objective-c
-[[SimpleLocalNotification sharedInstance]
-scheduleLocalNotificationWithAlertBody:@"Notification Text"
-timeIntervalFromNow:60*5 // in 5 minutes
-uniqueIdentifier:@"001"
-completion:nil];
+[[SimpleLocalNotification sharedInstance] scheduleLocalNotificationWithAlertBody:@"Notification Text"
+                                                             timeIntervalFromNow:60*5 // in 5 minutes
+                                                                uniqueIdentifier:@"001"
+                                                                      completion:nil];
 ```
 
 ## SimpleTableView
@@ -42,14 +40,13 @@ thoughts on indexPath's etc.'
 Example on how do define a simple row including its tap handler:
 
 ```objective-c
-[STVRow
-rowWithCellReuseIdentifier:reuseIdentifier
-title:@"Cell Title"
-subtitle:nil
-configureCellBlock:nil
-didSelectBlock:^(STVRow *STVRow, UITableViewCell *cell, UITableView *tableView, NSIndexPath *indexPath) {
+[STVRow rowWithCellReuseIdentifier:reuseIdentifier
+                             title:@"Cell Title"
+                          subtitle:nil
+                configureCellBlock:nil
+                    didSelectBlock:^(STVRow *STVRow, UITableViewCell *cell, UITableView *tableView, NSIndexPath *indexPath) {
   // tap handler
-}]
+}];
 ```
 
 ## SimpleAlertController
@@ -59,9 +56,9 @@ Example for a simple confirmation alert:
 
 ```objective-c
 [UIAlertController presentFromViewController:viewController
-withTitle:@"Alert Title"
-message:@"Alert Message"
-confirmationButtonTitle:@"Ok"];
+                                   withTitle:@"Alert Title"
+                                     message:@"Alert Message"
+                     confirmationButtonTitle:@"Ok"];
 ```
 
 ## SimpleMotionEffects
