@@ -8,25 +8,25 @@
 
 @implementation UIAlertController (SimpleAPI)
 
-+ (void)presentFromViewController:(UIViewController *)viewController
++ (UIAlertController *)presentFromViewController:(UIViewController *)viewController
                         withTitle:(NSString *)title
                           message:(NSString *)message
           confirmationButtonTitle:(NSString *)confirmationButtonTitle
 {
-  [self presentFromViewController:viewController
-                   preferredStyle:UIAlertControllerStyleAlert
-                        withTitle:title
-                          message:message
-                          buttons:@[[SimpleAlertButton defaultButtonWithTitle:confirmationButtonTitle]]
-                    buttonHandler:nil];
+  return [self presentFromViewController:viewController
+                          preferredStyle:UIAlertControllerStyleAlert
+                               withTitle:title
+                                 message:message
+                                 buttons:@[[SimpleAlertButton defaultButtonWithTitle:confirmationButtonTitle]]
+                           buttonHandler:nil];
 }
 
-+ (void)presentFromViewController:(UIViewController *)viewController
-                   preferredStyle:(UIAlertControllerStyle)preferredStyle
-                        withTitle:(NSString *)title
-                          message:(NSString *)message
-                          buttons:(NSArray<SimpleAlertButton *> *)buttons
-                    buttonHandler:(void (^)(UIAlertAction *))buttonHandler
++ (UIAlertController *)presentFromViewController:(UIViewController *)viewController
+                                  preferredStyle:(UIAlertControllerStyle)preferredStyle
+                                       withTitle:(NSString *)title
+                                         message:(NSString *)message
+                                         buttons:(NSArray<SimpleAlertButton *> *)buttons
+                                   buttonHandler:(void (^)(UIAlertAction *))buttonHandler
 {
   UIAlertController *alertController = [UIAlertController
                                         alertControllerWithTitle:title
@@ -38,6 +38,7 @@
   }
 
   [viewController presentViewController:alertController animated:YES completion:nil];
+  return alertController;
 }
 
 static UIAlertAction *ActionForButton(SimpleAlertButton *button, void (^buttonHandler)(UIAlertAction *))
