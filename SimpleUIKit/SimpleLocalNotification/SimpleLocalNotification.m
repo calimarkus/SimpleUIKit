@@ -9,21 +9,20 @@
 
 @implementation SimpleLocalNotification
 
-+ (void)isRegisteredForLocalNotificationsWithCompletion:(void(^)(BOOL userDidAllowAlerts, UNNotificationSettings *settings))completion
-{
-
++ (void)isRegisteredForLocalNotificationsWithCompletion:(void(^)(BOOL userDidAllowAlerts, UNNotificationSettings *settings))completion {
   if (completion) {
     [[UNUserNotificationCenter currentNotificationCenter] getNotificationSettingsWithCompletionHandler:^(UNNotificationSettings *settings) {
-      completion(settings.authorizationStatus == UNAuthorizationStatusAuthorized &&
-                 settings.alertSetting == UNNotificationSettingEnabled,
-                 settings);
+      dispatch_async(dispatch_get_main_queue(), ^{
+        completion(settings.authorizationStatus == UNAuthorizationStatusAuthorized &&
+                   settings.alertSetting == UNNotificationSettingEnabled,
+                   settings);
+      });
     }];
   }
 
 }
 
-+ (void)registerForLocalNotificationsIfNeededWithCompletion:(void(^)(BOOL granted, UNNotificationSettings *settings, NSError *error))completion
-{
++ (void)registerForLocalNotificationsIfNeededWithCompletion:(void(^)(BOOL granted, UNNotificationSettings *settings, NSError *error))completion {
   [self isRegisteredForLocalNotificationsWithCompletion:^(BOOL userDidAllowAlerts, UNNotificationSettings *settings) {
     if (!userDidAllowAlerts) {
       [[UNUserNotificationCenter currentNotificationCenter]
@@ -49,8 +48,7 @@
 + (void)scheduleLocalNotificationWithAlertBody:(NSString*)alertBody
                            timeIntervalFromNow:(NSTimeInterval)timeIntervalFromNow
                               uniqueIdentifier:(NSString *)uniqueIdentifier
-                                    completion:(void (^)(NSError *))completion
-{
+                                    completion:(void (^)(NSError *))completion {
   NSParameterAssert(timeIntervalFromNow > 0);
 
   [self registerForLocalNotificationsIfNeededWithCompletion:^(BOOL granted, UNNotificationSettings *settings, NSError *registerError) {
@@ -73,17 +71,18 @@
              completion(addError);
            });
          }
-       }];
+      }];
     } else {
       if (completion) {
-        completion(registerError);
+        dispatch_async(dispatch_get_main_queue(), ^{
+          completion(registerError);
+        });
       }
     }
   }];
 }
 
-+ (void)cancelScheduledLocalNotificationsMatchingUniqueIdentifier:(NSString *)uniqueIdentifier
-{
++ (void)cancelScheduledLocalNotificationsMatchingUniqueIdentifier:(NSString *)uniqueIdentifier {
   [[UNUserNotificationCenter currentNotificationCenter]
    removePendingNotificationRequestsWithIdentifiers:@[uniqueIdentifier]];
 }
