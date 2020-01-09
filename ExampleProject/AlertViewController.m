@@ -14,8 +14,7 @@ NSString *const AlertReuseIdentifier = @"AlertReuseIdentifier";
   SimpleTableView *_simpleTableView;
 }
 
-- (instancetype)init
-{
+- (instancetype)init {
   self = [super init];
   if (self) {
     self.title = @"SimpleAlertController";
@@ -23,8 +22,7 @@ NSString *const AlertReuseIdentifier = @"AlertReuseIdentifier";
   return self;
 }
 
-- (void)loadView
-{
+- (void)loadView {
   SimpleTableView *simpleTableView = [[SimpleTableView alloc] initWithTableViewStyle:UITableViewStyleGrouped];
   [simpleTableView.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:AlertReuseIdentifier];
   simpleTableView.sectionModels = [self _createSections];
@@ -33,8 +31,7 @@ NSString *const AlertReuseIdentifier = @"AlertReuseIdentifier";
   self.view = simpleTableView.tableView;
 }
 
-- (NSArray<STVSection *> *)_createSections
-{
+- (NSArray<STVSection *> *)_createSections {
   return @[[STVSection sectionWithTitle:@"Basic" rows:
             @[[STVRow
                rowWithCellReuseIdentifier:AlertReuseIdentifier
@@ -42,41 +39,40 @@ NSString *const AlertReuseIdentifier = @"AlertReuseIdentifier";
                subtitle:nil
                configureCellBlock:nil
                didSelectBlock:^(STVRow *STVRow, UITableViewCell *cell, UITableView *tableView, NSIndexPath *indexPath) {
-                 [UIAlertController presentFromViewController:self
-                                                    withTitle:@"Confirm"
-                                                      message:@"This is a message for you."
-                                      confirmationButtonTitle:@"Ok"];
-               }],
+              [UIAlertController presentAlertFromViewController:self
+                                                      withTitle:@"Confirm"
+                                                        message:@"This is a message for you."
+                                        confirmationButtonTitle:@"Ok"];
+            }],
               [STVRow
                rowWithCellReuseIdentifier:AlertReuseIdentifier
                title:@"Show an alert"
                subtitle:nil
                configureCellBlock:nil
                didSelectBlock:^(STVRow *STVRow, UITableViewCell *cell, UITableView *tableView, NSIndexPath *indexPath) {
-                 [UIAlertController presentFromViewController:self
-                                               preferredStyle:UIAlertControllerStyleAlert
-                                                    withTitle:@"Title"
-                                                      message:@"This is a message for you."
-                                                      buttons:@[[SimpleAlertButton defaultButtonWithTitle:@"Ok"],
-                                                                [SimpleAlertButton cancelButtonWithTitle:@"Cancel"]]
-                                                buttonHandler:nil];
-               }],
+                [UIAlertController presentAlertFromViewController:self
+                                                        withTitle:@"Title"
+                                                          message:@"This is a message for you."
+                                                          buttons:@[[SimpleAlertButton defaultButtonWithTitle:@"Ok"],
+                                                                    [SimpleAlertButton cancelButtonWithTitle:@"Cancel"]]
+                                                    buttonHandler:nil];
+              }],
               [STVRow
                rowWithCellReuseIdentifier:AlertReuseIdentifier
                title:@"Show an ActionSheet"
                subtitle:nil
                configureCellBlock:nil
                didSelectBlock:^(STVRow *STVRow, UITableViewCell *cell, UITableView *tableView, NSIndexPath *indexPath) {
-                 [UIAlertController presentFromViewController:self
-                                               preferredStyle:UIAlertControllerStyleActionSheet
-                                                    withTitle:nil
-                                                      message:nil
-                                                      buttons:@[[SimpleAlertButton defaultButtonWithTitle:@"Option 1"],
-                                                                [SimpleAlertButton defaultButtonWithTitle:@"Option 2"],
-                                                                [SimpleAlertButton defaultButtonWithTitle:@"Option 3"],
-                                                                [SimpleAlertButton cancelButtonWithTitle:@"Cancel"]]
-                                                buttonHandler:nil];
-               }]]],
+                [UIAlertController presentActionSheetFromViewController:self
+                                                             sourceView:cell
+                                                              withTitle:nil
+                                                                message:nil
+                                                                buttons:@[[SimpleAlertButton defaultButtonWithTitle:@"Option 1"],
+                                                                          [SimpleAlertButton defaultButtonWithTitle:@"Option 2"],
+                                                                          [SimpleAlertButton defaultButtonWithTitle:@"Option 3"],
+                                                                          [SimpleAlertButton cancelButtonWithTitle:@"Cancel"]]
+                                                          buttonHandler:nil];
+              }]]],
            [STVSection sectionWithTitle:@"Destructive options" rows:
             @[[STVRow
                rowWithCellReuseIdentifier:AlertReuseIdentifier
@@ -84,28 +80,27 @@ NSString *const AlertReuseIdentifier = @"AlertReuseIdentifier";
                subtitle:nil
                configureCellBlock:nil
                didSelectBlock:^(STVRow *STVRow, UITableViewCell *cell, UITableView *tableView, NSIndexPath *indexPath) {
-                 [UIAlertController presentFromViewController:self
-                                               preferredStyle:UIAlertControllerStyleAlert
-                                                    withTitle:@"Title"
-                                                      message:@"This is a message for you."
-                                                      buttons:@[[SimpleAlertButton destructiveButtonWithTitle:@"Remove"],
-                                                                [SimpleAlertButton cancelButtonWithTitle:@"Cancel"]]
-                                                buttonHandler:nil];
-               }],
+              [UIAlertController presentAlertFromViewController:self
+                                                      withTitle:@"Title"
+                                                        message:@"This is a message for you."
+                                                        buttons:@[[SimpleAlertButton destructiveButtonWithTitle:@"Remove"],
+                                                                  [SimpleAlertButton cancelButtonWithTitle:@"Cancel"]]
+                                                  buttonHandler:nil];
+            }],
               [STVRow
                rowWithCellReuseIdentifier:AlertReuseIdentifier
                title:@"Show a confirmation ActionSheet"
                subtitle:nil
                configureCellBlock:nil
                didSelectBlock:^(STVRow *STVRow, UITableViewCell *cell, UITableView *tableView, NSIndexPath *indexPath) {
-                 [UIAlertController presentFromViewController:self
-                                               preferredStyle:UIAlertControllerStyleActionSheet
-                                                    withTitle:nil
-                                                      message:nil
-                                                      buttons:@[[SimpleAlertButton destructiveButtonWithTitle:@"Remove"],
-                                                                [SimpleAlertButton cancelButtonWithTitle:@"Cancel"]]
-                                                buttonHandler:nil];
-               }]]]];
+                [UIAlertController presentActionSheetFromViewController:self
+                                                             sourceView:cell
+                                                              withTitle:nil
+                                                                message:nil
+                                                                buttons:@[[SimpleAlertButton destructiveButtonWithTitle:@"Remove"],
+                                                                          [SimpleAlertButton cancelButtonWithTitle:@"Cancel"]]
+                                                          buttonHandler:nil];
+              }]]]];
 }
 
 @end

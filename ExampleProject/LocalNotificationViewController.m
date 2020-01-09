@@ -42,12 +42,12 @@ NSString *const LocalNotifReuseIdentifier = @"LocalNotifReuseIdentifier";
     [SimpleLocalNotification isRegisteredForLocalNotificationsWithCompletion:^(BOOL userDidAllowAlerts, UNNotificationSettings *settings) {
       if (!userDidAllowAlerts) {
         [SimpleLocalNotification registerForLocalNotificationsIfNeededWithCompletion:^(BOOL granted, UNNotificationSettings *settings, NSError *error) {
-          [UIAlertController presentFromViewController:self
-                                             withTitle:@"Status"
-                                               message:(granted ?
-                                                        @"Notifications granted!" :
-                                                        @"Notifications not granted.")
-                               confirmationButtonTitle:@"OK"];
+          [UIAlertController presentAlertFromViewController:self
+                                                  withTitle:@"Status"
+                                                    message:(granted ?
+                                                             @"Notifications granted!" :
+                                                             @"Notifications not granted.")
+                                    confirmationButtonTitle:@"OK"];
         }];
       }
     }];
