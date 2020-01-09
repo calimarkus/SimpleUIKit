@@ -5,28 +5,19 @@
 
 #import <UIKit/UIKit.h>
 
-@class SimpleLocalNotification;
 @class UNNotificationSettings;
-
-@protocol SimpleLocalNotificationDelegate <NSObject>
-- (void)simpleLocalNotificationAccessWasDenied:(SimpleLocalNotification *)simpleLocalNotification;
-@end
 
 __IOS_AVAILABLE(10.0)
 @interface SimpleLocalNotification : NSObject
 
-@property (nonatomic, weak) id<SimpleLocalNotificationDelegate> delegate;
++ (void)isRegisteredForLocalNotificationsWithCompletion:(void(^)(BOOL userDidAllowAlerts, UNNotificationSettings *settings))completion;
++ (void)registerForLocalNotificationsIfNeededWithCompletion:(void(^)(BOOL granted, UNNotificationSettings *settings, NSError *error))completion;
 
-+ (instancetype)sharedInstance;
-
-- (void)isRegisteredForLocalNotificationsWithCompletion:(void(^)(BOOL userDidAllowAlerts, UNNotificationSettings *settings))completion;
-- (void)registerForLocalNotificationsIfNeededWithCompletion:(void(^)(BOOL granted, NSError *error))completion;
-
-- (void)scheduleLocalNotificationWithAlertBody:(NSString*)alertBody
++ (void)scheduleLocalNotificationWithAlertBody:(NSString*)alertBody
                            timeIntervalFromNow:(NSTimeInterval)timeIntervalFromNow
                               uniqueIdentifier:(NSString *)uniqueIdentifier
                                     completion:(void(^)(NSError *error))completion;
 
-- (void)cancelScheduledLocalNotificationsMatchingUniqueIdentifier:(NSString *)uniqueIdentifier;
++ (void)cancelScheduledLocalNotificationsMatchingUniqueIdentifier:(NSString *)uniqueIdentifier;
 
 @end

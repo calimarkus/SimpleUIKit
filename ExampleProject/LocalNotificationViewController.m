@@ -39,9 +39,9 @@ NSString *const LocalNotifReuseIdentifier = @"LocalNotifReuseIdentifier";
   [super viewDidAppear:animated];
 
   if (@available(iOS 10.0, *)) {
-    [[SimpleLocalNotification sharedInstance] isRegisteredForLocalNotificationsWithCompletion:^(BOOL userDidAllowAlerts, UNNotificationSettings *settings) {
+    [SimpleLocalNotification isRegisteredForLocalNotificationsWithCompletion:^(BOOL userDidAllowAlerts, UNNotificationSettings *settings) {
       if (!userDidAllowAlerts) {
-        [[SimpleLocalNotification sharedInstance] registerForLocalNotificationsIfNeededWithCompletion:^(BOOL granted, NSError *error) {
+        [SimpleLocalNotification registerForLocalNotificationsIfNeededWithCompletion:^(BOOL granted, UNNotificationSettings *settings, NSError *error) {
           [UIAlertController presentFromViewController:self
                                              withTitle:@"Status"
                                                message:(granted ?
@@ -64,11 +64,10 @@ NSString *const LocalNotifReuseIdentifier = @"LocalNotifReuseIdentifier";
                configureCellBlock:nil
                didSelectBlock:^(STVRow *STVRow, UITableViewCell *cell, UITableView *tableView, NSIndexPath *indexPath) {
                  if (@available(iOS 10.0, *)) {
-                   [[SimpleLocalNotification sharedInstance]
-                    scheduleLocalNotificationWithAlertBody:@"This is the text"
-                    timeIntervalFromNow:0.01
-                    uniqueIdentifier:@"0"
-                    completion:nil];
+                   [SimpleLocalNotification scheduleLocalNotificationWithAlertBody:@"This is the text"
+                                                               timeIntervalFromNow:0.01
+                                                                  uniqueIdentifier:@"0"
+                                                                        completion:nil];
                  }
                }],[STVRow
                rowWithCellReuseIdentifier:LocalNotifReuseIdentifier
@@ -77,11 +76,10 @@ NSString *const LocalNotifReuseIdentifier = @"LocalNotifReuseIdentifier";
                configureCellBlock:nil
                didSelectBlock:^(STVRow *STVRow, UITableViewCell *cell, UITableView *tableView, NSIndexPath *indexPath) {
                  if (@available(iOS 10.0, *)) {
-                   [[SimpleLocalNotification sharedInstance]
-                    scheduleLocalNotificationWithAlertBody:@"This is the text"
-                    timeIntervalFromNow:1
-                    uniqueIdentifier:@"1"
-                    completion:nil];
+                   [SimpleLocalNotification scheduleLocalNotificationWithAlertBody:@"This is the text"
+                                                               timeIntervalFromNow:1
+                                                                  uniqueIdentifier:@"1"
+                                                                        completion:nil];
                  }
                }],
               [STVRow
@@ -91,11 +89,10 @@ NSString *const LocalNotifReuseIdentifier = @"LocalNotifReuseIdentifier";
                configureCellBlock:nil
                didSelectBlock:^(STVRow *STVRow, UITableViewCell *cell, UITableView *tableView, NSIndexPath *indexPath) {
                  if (@available(iOS 10.0, *)) {
-                   [[SimpleLocalNotification sharedInstance]
-                    scheduleLocalNotificationWithAlertBody:@"This is the text"
-                    timeIntervalFromNow:2
-                    uniqueIdentifier:@"2"
-                    completion:nil];
+                   [SimpleLocalNotification scheduleLocalNotificationWithAlertBody:@"This is the text"
+                                                               timeIntervalFromNow:2
+                                                                  uniqueIdentifier:@"2"
+                                                                        completion:nil];
                  }
                }],
               [STVRow
@@ -105,11 +102,10 @@ NSString *const LocalNotifReuseIdentifier = @"LocalNotifReuseIdentifier";
                configureCellBlock:nil
                didSelectBlock:^(STVRow *STVRow, UITableViewCell *cell, UITableView *tableView, NSIndexPath *indexPath) {
                  if (@available(iOS 10.0, *)) {
-                   [[SimpleLocalNotification sharedInstance]
-                    scheduleLocalNotificationWithAlertBody:@"This is the text"
-                    timeIntervalFromNow:5
-                    uniqueIdentifier:@"5"
-                    completion:nil];
+                   [SimpleLocalNotification scheduleLocalNotificationWithAlertBody:@"This is the text"
+                                                               timeIntervalFromNow:5
+                                                                  uniqueIdentifier:@"5"
+                                                                        completion:nil];
                  }
                }]]]];
 }
