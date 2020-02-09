@@ -79,7 +79,7 @@
   [self setNeedsLayout];
 }
 
-- (void)layoutSubviews;
+- (void)layoutSubviews
 {
   [super layoutSubviews];
 

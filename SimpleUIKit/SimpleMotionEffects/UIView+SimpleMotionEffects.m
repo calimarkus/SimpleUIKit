@@ -10,13 +10,13 @@
 
 @implementation UIView (SimpleMotionEffects)
 
-- (void)addMotionEffectWithMovement:(CGPoint)movement;
+- (void)addMotionEffectWithMovement:(CGPoint)movement
 {
     [self addMotionEffectWithType:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis keyPath:@"center.x" value:movement.x];
     [self addMotionEffectWithType:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis keyPath:@"center.y" value:movement.y];
 }
 
-- (void)addMotionEffectOnHorizontalTilt:(CGPoint)horizontalMovement onVerticalTilt:(CGPoint)verticalMovement;
+- (void)addMotionEffectOnHorizontalTilt:(CGPoint)horizontalMovement onVerticalTilt:(CGPoint)verticalMovement
 {
     [self addMotionEffectWithType:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis keyPath:@"center.x" value:horizontalMovement.x];
     [self addMotionEffectWithType:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis keyPath:@"center.y" value:horizontalMovement.y];
@@ -24,12 +24,12 @@
     [self addMotionEffectWithType:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis keyPath:@"center.y" value:verticalMovement.y];
 }
 
-- (void)addMotionEffectWithType:(UIInterpolatingMotionEffectType)type keyPath:(NSString*)keyPath value:(CGFloat)value;
+- (void)addMotionEffectWithType:(UIInterpolatingMotionEffectType)type keyPath:(NSString*)keyPath value:(CGFloat)value
 {
     [self addMotionEffectWithType:type keyPath:keyPath minValue:-value maxValue:value];
 }
 
-- (void)addMotionEffectWithType:(UIInterpolatingMotionEffectType)type keyPath:(NSString*)keyPath minValue:(CGFloat)minValue maxValue:(CGFloat)maxValue;
+- (void)addMotionEffectWithType:(UIInterpolatingMotionEffectType)type keyPath:(NSString*)keyPath minValue:(CGFloat)minValue maxValue:(CGFloat)maxValue
 {
     if (![self respondsToSelector:@selector(addMotionEffect:)]) return; // ios7 check
     if ((minValue == 0 && maxValue == 0) || keyPath == nil) return; // check needed values

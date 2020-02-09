@@ -79,7 +79,7 @@
 
 #pragma mark UITableViewDelegate / UITableViewDatasource
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section;
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
   return tableView.rowHeight;
 }
@@ -94,14 +94,14 @@
   return _sectionModels[section].rows.count;
 }
 
-- (NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section;
+- (NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
   return _sectionModels[section].title;
 }
 
 #pragma mark - Cell configuration
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
   STVRow *const row = _sectionModels[indexPath.section].rows[indexPath.row];
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:row.cellReuseIdentifier];
