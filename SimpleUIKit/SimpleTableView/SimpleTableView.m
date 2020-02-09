@@ -6,11 +6,13 @@
 #import "SimpleTableView.h"
 
 @implementation STVSection
-+ (instancetype)sectionWithTitle:(NSString *)title
-                            rows:(NSArray<STVRow *> *)rows
++ (instancetype)sectionWithTitle:(nullable NSString *)title
+               sectionIndexTitle:(nullable NSString *)sectionIndexTitle
+                            rows:(nullable NSArray<STVRow *> *)rows
 {
   STVSection *section = [STVSection new];
   section->_title = [title copy];
+  section->_sectionIndexTitle = [sectionIndexTitle copy];
   section->_rows = [rows copy];
   return section;
 }
@@ -36,7 +38,10 @@
 @interface SimpleTableView () <UITableViewDelegate, UITableViewDataSource>
 @end
 
-@implementation SimpleTableView
+@implementation SimpleTableView {
+  NSArray<NSString *> *_sortedSectionTitles;
+  NSDictionary<NSString *, NSNumber *> *_sectionTitleToIndexMap;
+}
 
 - (instancetype)initWithTableViewStyle:(UITableViewStyle)tableViewStyle
 {
@@ -56,6 +61,19 @@
 - (void)setSectionModels:(NSArray<STVSection *> *)sectionModels
 {
   _sectionModels = sectionModels;
+
+  // setup index map
+  NSMutableArray<NSString *> *sortedSectionTitles = [NSMutableArray array];
+  NSMutableDictionary<NSString *, NSNumber *> *sectionTitleToIndexMap = [NSMutableDictionary dictionary];
+  [sectionModels enumerateObjectsUsingBlock:^(STVSection *section, NSUInteger idx, BOOL *stop) {
+    if (section.sectionIndexTitle.length > 0) {
+      [sortedSectionTitles addObject:section.sectionIndexTitle];
+      sectionTitleToIndexMap[section.sectionIndexTitle] = @(idx);
+    }
+  }];
+  _sortedSectionTitles = sortedSectionTitles;
+  _sectionTitleToIndexMap = [sectionTitleToIndexMap copy];
+
   [_tableView reloadData];
 }
 
@@ -81,6 +99,8 @@
   return _sectionModels[section].title;
 }
 
+#pragma mark - Cell configuration
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
   STVRow *const row = _sectionModels[indexPath.section].rows[indexPath.row];
@@ -102,6 +122,8 @@
   }
 }
 
+#pragma mark - Selection
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
   STVRow *const row = _sectionModels[indexPath.section].rows[indexPath.row];
@@ -111,6 +133,26 @@
   if (_shouldDeselectRowsAutomatically) {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
   }
+}
+
+#pragma mark - Section Indexes
+
+- (nullable NSArray<NSString *> *)sectionIndexTitlesForTableView:(UITableView *)tableView {
+  return _sortedSectionTitles;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index {
+  return _sectionTitleToIndexMap[title].integerValue;
+}
+
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+  [_scrollDelegate scrollViewDidScroll:scrollView];
+}
+
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
+  [_scrollDelegate scrollViewWillEndDragging:scrollView withVelocity:velocity targetContentOffset:targetContentOffset];
 }
 
 @end

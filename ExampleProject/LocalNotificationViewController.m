@@ -56,7 +56,7 @@ NSString *const LocalNotifReuseIdentifier = @"LocalNotifReuseIdentifier";
 
 - (NSArray<STVSection *> *)_createSections
 {
-  return @[[STVSection sectionWithTitle:nil rows:
+  return @[[STVSection sectionWithTitle:nil sectionIndexTitle:nil rows:
             @[[STVRow
                rowWithCellReuseIdentifier:LocalNotifReuseIdentifier
                title:@"Schedule now"

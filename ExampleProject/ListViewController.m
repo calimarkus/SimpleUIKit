@@ -11,6 +11,7 @@
 #import "LocalNotificationViewController.h"
 #import "MotionEffectsViewController.h"
 #import "SimpleTableView.h"
+#import "TableViewViewController.h"
 
 NSString *const ListReuseIdentifier = @"ListReuseIdentifier";
 
@@ -40,7 +41,7 @@ NSString *const ListReuseIdentifier = @"ListReuseIdentifier";
 - (NSArray<STVSection *> *)_createSections
 {
   __weak typeof(self) weakSelf = self;
-  return @[[STVSection sectionWithTitle:@"Projects" rows:
+  return @[[STVSection sectionWithTitle:@"Projects" sectionIndexTitle:nil rows:
             @[[STVRow
                rowWithCellReuseIdentifier:ListReuseIdentifier
                title:@"SimpleActivityView"
@@ -72,15 +73,23 @@ NSString *const ListReuseIdentifier = @"ListReuseIdentifier";
                configureCellBlock:nil
                didSelectBlock:^(STVRow *STVRow, UITableViewCell *cell, UITableView *tableView, NSIndexPath *indexPath) {
                  [weakSelf.navigationController pushViewController:[LocalNotificationViewController new] animated:YES];
-               }],
+              }],
               [STVRow
                rowWithCellReuseIdentifier:ListReuseIdentifier
                title:@"SimpleMotionEffects"
                subtitle:nil
                configureCellBlock:nil
                didSelectBlock:^(STVRow *STVRow, UITableViewCell *cell, UITableView *tableView, NSIndexPath *indexPath) {
-                 [weakSelf.navigationController pushViewController:[MotionEffectsViewController new] animated:YES];
-               }]]]];
+                [weakSelf.navigationController pushViewController:[MotionEffectsViewController new] animated:YES];
+              }],
+              [STVRow
+               rowWithCellReuseIdentifier:ListReuseIdentifier
+               title:@"SimpleTableView"
+               subtitle:nil
+               configureCellBlock:nil
+               didSelectBlock:^(STVRow *STVRow, UITableViewCell *cell, UITableView *tableView, NSIndexPath *indexPath) {
+                [weakSelf.navigationController pushViewController:[TableViewViewController new] animated:YES];
+              }]]]];
 }
 
 @end

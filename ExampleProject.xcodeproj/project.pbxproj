@@ -21,6 +21,7 @@
 		28D9276B1E0B552A004CB221 /* AttributedStringViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D9276A1E0B552A004CB221 /* AttributedStringViewController.m */; };
 		28D9276E1E0B6DDE004CB221 /* AlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D9276D1E0B6DDE004CB221 /* AlertViewController.m */; };
 		28D927711E0C4B9A004CB221 /* LocalNotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D927701E0C4B9A004CB221 /* LocalNotificationViewController.m */; };
+		28E3821023F0B5AE0047753A /* TableViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E3820F23F0B5AE0047753A /* TableViewViewController.m */; };
 		D253D7F21839385E00BE6C44 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D253D7F11839385E00BE6C44 /* Foundation.framework */; };
 		D253D7F41839385E00BE6C44 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D253D7F31839385E00BE6C44 /* CoreGraphics.framework */; };
 		D253D7F61839385E00BE6C44 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D253D7F51839385E00BE6C44 /* UIKit.framework */; };
@@ -58,6 +59,8 @@
 		28D9276D1E0B6DDE004CB221 /* AlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertViewController.m; sourceTree = "<group>"; };
 		28D9276F1E0C4B9A004CB221 /* LocalNotificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalNotificationViewController.h; sourceTree = "<group>"; };
 		28D927701E0C4B9A004CB221 /* LocalNotificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalNotificationViewController.m; sourceTree = "<group>"; };
+		28E3820E23F0B5AE0047753A /* TableViewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableViewViewController.h; sourceTree = "<group>"; };
+		28E3820F23F0B5AE0047753A /* TableViewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableViewViewController.m; sourceTree = "<group>"; };
 		D253D7EE1839385E00BE6C44 /* ExampleProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExampleProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D253D7F11839385E00BE6C44 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D253D7F31839385E00BE6C44 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -213,6 +216,8 @@
 				28D927701E0C4B9A004CB221 /* LocalNotificationViewController.m */,
 				D253D8201839386900BE6C44 /* MotionEffectsViewController.h */,
 				D253D8211839386900BE6C44 /* MotionEffectsViewController.m */,
+				28E3820E23F0B5AE0047753A /* TableViewViewController.h */,
+				28E3820F23F0B5AE0047753A /* TableViewViewController.m */,
 				D253D8031839385E00BE6C44 /* Images.xcassets */,
 				D253D7F81839385E00BE6C44 /* Supporting Files */,
 			);
@@ -269,6 +274,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = D253D7E51839385E00BE6C44;
@@ -306,6 +312,7 @@
 				D253D8221839386900BE6C44 /* MotionEffectsViewController.m in Sources */,
 				28D927621E08FE73004CB221 /* SimpleTableView.m in Sources */,
 				28D927711E0C4B9A004CB221 /* LocalNotificationViewController.m in Sources */,
+				28E3821023F0B5AE0047753A /* TableViewViewController.m in Sources */,
 				28D9275C1E08FE73004CB221 /* UIAlertController+SimpleUIKit.m in Sources */,
 				28D927681E0A525A004CB221 /* ActivityViewController.m in Sources */,
 				28D9276B1E0B552A004CB221 /* AttributedStringViewController.m in Sources */,

@@ -37,7 +37,7 @@ NSString *const NoSelectionIndicatorIdentifier = @"NoSelectionIndicatorIdentifie
 - (NSArray<STVSection *> *)_createSections
 {
   __weak typeof(self) weakSelf = self;
-  return @[[STVSection sectionWithTitle:@"On NavigationController.view" rows:
+  return @[[STVSection sectionWithTitle:@"On NavigationController.view" sectionIndexTitle:nil rows:
             @[[STVRow
                rowWithCellReuseIdentifier:ActivityReuseIdentifier
                title:@"Show \"Loading\" for 2s"
@@ -86,7 +86,7 @@ NSString *const NoSelectionIndicatorIdentifier = @"NoSelectionIndicatorIdentifie
                     }
                   }];
                }]]],
-           [STVSection sectionWithTitle:@"On TableViewCell" rows:
+           [STVSection sectionWithTitle:@"On TableViewCell" sectionIndexTitle:nil rows:
             @[[STVRow
                rowWithCellReuseIdentifier:NoSelectionIndicatorIdentifier
                title:@"Show for 2s"
@@ -106,7 +106,7 @@ NSString *const NoSelectionIndicatorIdentifier = @"NoSelectionIndicatorIdentifie
                     });
                   }];
                }]]],
-           [STVSection sectionWithTitle:@"Custom Presentation" rows:
+           [STVSection sectionWithTitle:@"Custom Presentation" sectionIndexTitle:nil rows:
             @[[STVRow
                rowWithCellReuseIdentifier:NoSelectionIndicatorIdentifier
                title:@"Show for 2s"

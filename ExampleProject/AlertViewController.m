@@ -32,7 +32,7 @@ NSString *const AlertReuseIdentifier = @"AlertReuseIdentifier";
 }
 
 - (NSArray<STVSection *> *)_createSections {
-  return @[[STVSection sectionWithTitle:@"Basic" rows:
+  return @[[STVSection sectionWithTitle:@"Basic" sectionIndexTitle:nil rows:
             @[[STVRow
                rowWithCellReuseIdentifier:AlertReuseIdentifier
                title:@"Show a confirmation alert"
@@ -73,7 +73,7 @@ NSString *const AlertReuseIdentifier = @"AlertReuseIdentifier";
                                                                           [SimpleAlertButton cancelButtonWithTitle:@"Cancel"]]
                                                           buttonHandler:nil];
               }]]],
-           [STVSection sectionWithTitle:@"Destructive options" rows:
+           [STVSection sectionWithTitle:@"Destructive options" sectionIndexTitle:nil rows:
             @[[STVRow
                rowWithCellReuseIdentifier:AlertReuseIdentifier
                title:@"Show a confirmation alert"
