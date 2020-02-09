@@ -17,7 +17,10 @@ typedef void (^SimpleAlertButtonDestructiveButtonMatchHandler)(NSString *title);
 
 + (instancetype)destructiveButtonWithTitle:(NSString *)title;
 
-- (void)matchDefaultButton:(SimpleAlertButtonDefaultButtonMatchHandler)defaultButtonMatchHandler cancelButton:(SimpleAlertButtonCancelButtonMatchHandler)cancelButtonMatchHandler destructiveButton:(SimpleAlertButtonDestructiveButtonMatchHandler)destructiveButtonMatchHandler;
++ (instancetype)new NS_UNAVAILABLE;
+
+- (instancetype)init NS_UNAVAILABLE;
+
+- (void)matchDefaultButton:(NS_NOESCAPE __unsafe_unretained SimpleAlertButtonDefaultButtonMatchHandler)defaultButtonMatchHandler cancelButton:(NS_NOESCAPE __unsafe_unretained SimpleAlertButtonCancelButtonMatchHandler)cancelButtonMatchHandler destructiveButton:(NS_NOESCAPE __unsafe_unretained SimpleAlertButtonDestructiveButtonMatchHandler)destructiveButtonMatchHandler NS_SWIFT_NAME(match(defaultButton:cancelButton:destructiveButton:));
 
 @end
-

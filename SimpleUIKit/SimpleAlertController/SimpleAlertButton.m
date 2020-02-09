@@ -9,15 +9,15 @@
 
 #import "SimpleAlertButton.h"
 
-typedef NS_ENUM(NSUInteger, _SimpleAlertButtonSubtypes) {
-  _SimpleAlertButtonSubtypesdefaultButton,
-  _SimpleAlertButtonSubtypescancelButton,
-  _SimpleAlertButtonSubtypesdestructiveButton
+typedef NS_ENUM(NSUInteger, SimpleAlertButtonSubtypes) {
+  SimpleAlertButtonSubtypesDefaultButton,
+  SimpleAlertButtonSubtypesCancelButton,
+  SimpleAlertButtonSubtypesDestructiveButton
 };
 
 @implementation SimpleAlertButton
 {
-  _SimpleAlertButtonSubtypes _subtype;
+  SimpleAlertButtonSubtypes _subtype;
   NSString *_defaultButton_title;
   NSString *_cancelButton_title;
   NSString *_destructiveButton_title;
@@ -25,29 +25,29 @@ typedef NS_ENUM(NSUInteger, _SimpleAlertButtonSubtypes) {
 
 + (instancetype)cancelButtonWithTitle:(NSString *)title
 {
-  SimpleAlertButton *object = [[SimpleAlertButton alloc] init];
-  object->_subtype = _SimpleAlertButtonSubtypescancelButton;
+  SimpleAlertButton *object = [(id)self new];
+  object->_subtype = SimpleAlertButtonSubtypesCancelButton;
   object->_cancelButton_title = title;
   return object;
 }
 
 + (instancetype)defaultButtonWithTitle:(NSString *)title
 {
-  SimpleAlertButton *object = [[SimpleAlertButton alloc] init];
-  object->_subtype = _SimpleAlertButtonSubtypesdefaultButton;
+  SimpleAlertButton *object = [(id)self new];
+  object->_subtype = SimpleAlertButtonSubtypesDefaultButton;
   object->_defaultButton_title = title;
   return object;
 }
 
 + (instancetype)destructiveButtonWithTitle:(NSString *)title
 {
-  SimpleAlertButton *object = [[SimpleAlertButton alloc] init];
-  object->_subtype = _SimpleAlertButtonSubtypesdestructiveButton;
+  SimpleAlertButton *object = [(id)self new];
+  object->_subtype = SimpleAlertButtonSubtypesDestructiveButton;
   object->_destructiveButton_title = title;
   return object;
 }
 
-- (id)copyWithZone:(NSZone *)zone
+- (id)copyWithZone:(nullable NSZone *)zone
 {
   return self;
 }
@@ -55,15 +55,15 @@ typedef NS_ENUM(NSUInteger, _SimpleAlertButtonSubtypes) {
 - (NSString *)description
 {
   switch (_subtype) {
-    case _SimpleAlertButtonSubtypesdefaultButton: {
+    case SimpleAlertButtonSubtypesDefaultButton: {
       return [NSString stringWithFormat:@"%@ - defaultButton \n\t title: %@; \n", [super description], _defaultButton_title];
       break;
     }
-    case _SimpleAlertButtonSubtypescancelButton: {
+    case SimpleAlertButtonSubtypesCancelButton: {
       return [NSString stringWithFormat:@"%@ - cancelButton \n\t title: %@; \n", [super description], _cancelButton_title];
       break;
     }
-    case _SimpleAlertButtonSubtypesdestructiveButton: {
+    case SimpleAlertButtonSubtypesDestructiveButton: {
       return [NSString stringWithFormat:@"%@ - destructiveButton \n\t title: %@; \n", [super description], _destructiveButton_title];
       break;
     }
@@ -91,7 +91,7 @@ typedef NS_ENUM(NSUInteger, _SimpleAlertButtonSubtypes) {
 {
   if (self == object) {
     return YES;
-  } else if (self == nil || object == nil || ![object isKindOfClass:[self class]]) {
+  } else if (object == nil || ![object isKindOfClass:[self class]]) {
     return NO;
   }
   return
@@ -101,23 +101,28 @@ typedef NS_ENUM(NSUInteger, _SimpleAlertButtonSubtypes) {
     (_destructiveButton_title == object->_destructiveButton_title ? YES : [_destructiveButton_title isEqual:object->_destructiveButton_title]);
 }
 
-- (void)matchDefaultButton:(SimpleAlertButtonDefaultButtonMatchHandler)defaultButtonMatchHandler cancelButton:(SimpleAlertButtonCancelButtonMatchHandler)cancelButtonMatchHandler destructiveButton:(SimpleAlertButtonDestructiveButtonMatchHandler)destructiveButtonMatchHandler
+- (void)matchDefaultButton:(NS_NOESCAPE __unsafe_unretained SimpleAlertButtonDefaultButtonMatchHandler)defaultButtonMatchHandler cancelButton:(NS_NOESCAPE __unsafe_unretained SimpleAlertButtonCancelButtonMatchHandler)cancelButtonMatchHandler destructiveButton:(NS_NOESCAPE __unsafe_unretained SimpleAlertButtonDestructiveButtonMatchHandler)destructiveButtonMatchHandler
 {
   switch (_subtype) {
-    case _SimpleAlertButtonSubtypesdefaultButton: {
-      defaultButtonMatchHandler(_defaultButton_title);
+    case SimpleAlertButtonSubtypesDefaultButton: {
+      if (defaultButtonMatchHandler) {
+        defaultButtonMatchHandler(_defaultButton_title);
+      }
       break;
     }
-    case _SimpleAlertButtonSubtypescancelButton: {
-      cancelButtonMatchHandler(_cancelButton_title);
+    case SimpleAlertButtonSubtypesCancelButton: {
+      if (cancelButtonMatchHandler) {
+        cancelButtonMatchHandler(_cancelButton_title);
+      }
       break;
     }
-    case _SimpleAlertButtonSubtypesdestructiveButton: {
-      destructiveButtonMatchHandler(_destructiveButton_title);
+    case SimpleAlertButtonSubtypesDestructiveButton: {
+      if (destructiveButtonMatchHandler) {
+        destructiveButtonMatchHandler(_destructiveButton_title);
+      }
       break;
     }
   }
 }
 
 @end
-
