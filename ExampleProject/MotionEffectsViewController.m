@@ -8,19 +8,22 @@
 #import "MotionEffectsViewController.h"
 #import "UIView+SimplePositioning.h"
 
-@implementation MotionEffectsViewController
+@implementation MotionEffectsViewController {
+  UIButton *_backButton;
+}
 
 - (void)viewDidLoad
 {
   [super viewDidLoad];
 
   self.view.clipsToBounds = YES;
+  self.edgesForExtendedLayout = UIRectEdgeNone;
 
   // background image
   UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"wallpaper"]];
   imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-  imageView.frame = CGRectMake(0, 0, 900, 900);
-  imageView.frameOrigin = CGPointMake(-250, -100);
+  imageView.frame = CGRectMake(0, 0, 1200, 1200);
+  imageView.center = self.view.center;
   [imageView addMotionEffectWithMovement:CGPointMake(100, 100)];
   [self.view addSubview:imageView];
 
@@ -56,9 +59,15 @@
   button.tintColor = [UIColor whiteColor];
   button.titleLabel.font = [UIFont systemFontOfSize:18];
   [button sizeToFit];
-  button.frameOrigin = CGPointMake(20, 40);
+  button.frameOrigin = CGPointMake(20.0, 20.0);
   [button addTarget:self action:@selector(goBack:) forControlEvents:UIControlEventTouchUpInside];
   [self.view addSubview:button];
+  _backButton = button;
+}
+
+- (void)viewDidLayoutSubviews {
+  [super viewDidLayoutSubviews];
+  _backButton.frameY = self.view.safeAreaInsets.top;
 }
 
 - (void)viewWillAppear:(BOOL)animated

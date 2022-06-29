@@ -26,7 +26,7 @@ NSString *const NoSelectionIndicatorIdentifier = @"NoSelectionIndicatorIdentifie
 
 - (void)loadView
 {
-  SimpleTableView *simpleTableView = [[SimpleTableView alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+  SimpleTableView *simpleTableView = [[SimpleTableView alloc] initWithTableViewStyle:UITableViewStyleInsetGrouped];
   [simpleTableView.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:ActivityReuseIdentifier];
   [simpleTableView.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:NoSelectionIndicatorIdentifier];
   simpleTableView.sectionModels = [self _createSections];
@@ -97,7 +97,8 @@ NSString *const NoSelectionIndicatorIdentifier = @"NoSelectionIndicatorIdentifie
                didSelectBlock:^(STVRow *STVRow, UITableViewCell *cell, UITableView *tableView, NSIndexPath *indexPath) {
                  SimpleActivityView *activityView = [SimpleActivityView new];
                  activityView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:1.0];
-                 activityView.activityIndicatorView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+                 activityView.activityIndicatorView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleMedium;
+                 activityView.activityIndicatorView.color = nil;
                  [activityView
                   presentActivityViewOnView:cell.contentView
                   activityBlock:^(SimpleActivityView *activityView, SimpleActivityViewDismissBlock dismissBlock) {

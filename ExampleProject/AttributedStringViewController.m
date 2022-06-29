@@ -5,18 +5,29 @@
 
 #import "AttributedStringViewController.h"
 
+#import "UIView+SimplePositioning.h"
 #import "NSAttributedString+SimpleUIKit.h"
+
+typedef NS_ENUM(NSUInteger, EditAction) {
+  EditActionBold,
+  EditActionItalic,
+  EditActionUnderline
+};
+
+@interface AttributedStringViewController () <UITextViewDelegate>
+@end
 
 @implementation AttributedStringViewController {
   UITextView *_textView;
+  UIToolbar *_toolbar;
+  CGFloat _textSize;
 }
 
-- (instancetype)init
-{
+- (instancetype)init {
   self = [super init];
   if (self) {
     self.title = @"SimpleAttributedString";
-    self.edgesForExtendedLayout = UIRectEdgeNone;
+    _textSize = 15.0;
 
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardDidChangeFrame:)
@@ -24,11 +35,6 @@
                                                object:nil];
   }
   return self;
-}
-
-- (void)dealloc
-{
-  [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)keyboardDidChangeFrame:(NSNotification *)notification
@@ -40,53 +46,64 @@
   _textView.scrollIndicatorInsets = _textView.contentInset;
 }
 
-- (void)viewDidLoad
-{
-  CGFloat textSize = 15.0;
+- (void)loadView {
+  [super loadView];
+
+  self.view.backgroundColor = [UIColor systemGray6Color];
+
+  UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 40.0)];
+  toolbar.items = @[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
+                    [[UIBarButtonItem alloc] initWithTitle:@"B" style:UIBarButtonItemStylePlain target:self action:@selector(makeBold:)],
+                    [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
+                    [[UIBarButtonItem alloc] initWithTitle:@"I" style:UIBarButtonItemStylePlain target:self action:@selector(makeItalic:)],
+                    [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
+                    [[UIBarButtonItem alloc] initWithTitle:@"U" style:UIBarButtonItemStylePlain target:self action:@selector(makeUnderline:)],
+                    [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil]];
+  _toolbar = toolbar;
+  [self.view addSubview:toolbar];
+
   UITextView *textView = [[UITextView alloc] initWithFrame:self.view.bounds];
   textView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-  textView.font = [UIFont systemFontOfSize:textSize];
-  textView.attributedText = FormattedExampleText(textSize);
+  textView.attributedText = FormattedExampleText(_textSize);
+  textView.font = [UIFont systemFontOfSize:_textSize];
+  textView.delegate = self;
   _textView = textView;
   [self.view addSubview:_textView];
-
-  UIView *containerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 40)];
-  containerView.backgroundColor = [UIColor colorWithRed:0.94 green:0.94 blue:0.96 alpha:1.00];
-  UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:@[@"B",@"I",@"U"]];
-  segmentedControl.frame = CGRectMake(10, 5, 300, 30);
-  segmentedControl.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-  segmentedControl.momentary = YES;
-  [segmentedControl addTarget:self
-                       action:@selector(segmentedControlDidChangeValue:)
-             forControlEvents:UIControlEventValueChanged];
-  [containerView addSubview:segmentedControl];
-  textView.inputAccessoryView = containerView;
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-  [super viewWillAppear:animated];
+- (void)viewDidAppear:(BOOL)animated {
+  [super viewDidAppear:animated];
   [_textView becomeFirstResponder];
 }
 
-- (void)segmentedControlDidChangeValue:(UISegmentedControl *)segmentedControl
+- (void)viewDidLayoutSubviews {
+  [super viewDidLayoutSubviews];
+
+  _toolbar.frameY = self.view.safeAreaInsets.top;
+  _textView.frameY = _toolbar.frameBottom;
+  _textView.frameHeight = self.view.frameHeight - _toolbar.frameY - self.view.safeAreaInsets.bottom;
+}
+
+- (void)makeBold:(id)sender { [self editWithAction:EditActionBold]; }
+- (void)makeItalic:(id)sender { [self editWithAction:EditActionItalic]; }
+- (void)makeUnderline:(id)sender { [self editWithAction:EditActionUnderline]; }
+
+- (void)editWithAction:(EditAction)action
 {
   NSMutableAttributedString *mutableString = [_textView.attributedText mutableCopy];
-  switch (segmentedControl.selectedSegmentIndex) {
-    case 0:
-      [mutableString setFont:[UIFont boldSystemFontOfSize:[UIFont systemFontSize]]
+  switch (action) {
+    case EditActionBold:
+      [mutableString setFont:[UIFont boldSystemFontOfSize:_textSize]
                     forRange:_textView.selectedRange];
       break;
-    case 1:
-      [mutableString setFont:[UIFont italicSystemFontOfSize:[UIFont systemFontSize]]
+    case EditActionItalic:
+      [mutableString setFont:[UIFont italicSystemFontOfSize:_textSize]
                     forRange:_textView.selectedRange];
       break;
-    case 2:
-      [mutableString setAttributes:@{NSUnderlineStyleAttributeName:@(NSUnderlineStyleSingle)}
+    case EditActionUnderline:
+      [mutableString setAttributes:@{NSUnderlineStyleAttributeName:@(NSUnderlineStyleSingle),
+                                     NSFontAttributeName: [UIFont systemFontOfSize:_textSize]}
                              range:_textView.selectedRange];
-      break;
-
-    default:
       break;
   }
   _textView.attributedText = mutableString;

@@ -31,9 +31,11 @@
 
 - (void)addMotionEffectWithType:(UIInterpolatingMotionEffectType)type keyPath:(NSString*)keyPath minValue:(CGFloat)minValue maxValue:(CGFloat)maxValue
 {
-    if (![self respondsToSelector:@selector(addMotionEffect:)]) return; // ios7 check
-    if ((minValue == 0 && maxValue == 0) || keyPath == nil) return; // check needed values
-    
+  // check needed values
+  if ((minValue == 0 && maxValue == 0) || keyPath == nil) {
+    return;
+  }
+
 	UIInterpolatingMotionEffect *effect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:keyPath type:type];
 	effect.minimumRelativeValue = @(minValue);
 	effect.maximumRelativeValue = @(maxValue);

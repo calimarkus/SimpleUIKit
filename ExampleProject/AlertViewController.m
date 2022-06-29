@@ -23,7 +23,7 @@ NSString *const AlertReuseIdentifier = @"AlertReuseIdentifier";
 }
 
 - (void)loadView {
-  SimpleTableView *simpleTableView = [[SimpleTableView alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+  SimpleTableView *simpleTableView = [[SimpleTableView alloc] initWithTableViewStyle:UITableViewStyleInsetGrouped];
   [simpleTableView.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:AlertReuseIdentifier];
   simpleTableView.sectionModels = [self _createSections];
   _simpleTableView = simpleTableView;

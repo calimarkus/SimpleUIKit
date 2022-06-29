@@ -2,6 +2,8 @@
 //  SimpleActivityView.h
 //  SimpleUIKit
 
+#import <UIKit/UIKit.h>
+
 @class SimpleActivityView;
 
 typedef void(^SimpleActivityViewDismissBlock)(void);

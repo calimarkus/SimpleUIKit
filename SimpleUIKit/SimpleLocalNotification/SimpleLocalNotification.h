@@ -7,7 +7,6 @@
 
 @class UNNotificationSettings;
 
-__IOS_AVAILABLE(10.0)
 @interface SimpleLocalNotification : NSObject
 
 + (void)isRegisteredForLocalNotificationsWithCompletion:(void(^)(BOOL userDidAllowAlerts, UNNotificationSettings *settings))completion;

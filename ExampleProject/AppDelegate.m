@@ -9,13 +9,12 @@
 #import "UIAlertController+SimpleUIKit.h"
 #import <UserNotifications/UserNotifications.h>
 
-__IOS_AVAILABLE(10.0)
 @interface UserNotificationDelegate : NSObject <UNUserNotificationCenterDelegate>
 - (instancetype)initWithRootViewController:(UIViewController *)rootViewController;
 @end
 
 @implementation AppDelegate  {
-  id _userNotificationDelegate;
+  UserNotificationDelegate *_userNotificationDelegate;
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -24,10 +23,8 @@ __IOS_AVAILABLE(10.0)
   self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[ListViewController new]];
   [self.window makeKeyAndVisible];
 
-  if (@available(iOS 10.0, *)) {
-    _userNotificationDelegate = [[UserNotificationDelegate alloc] initWithRootViewController:self.window.rootViewController];
-    [[UNUserNotificationCenter currentNotificationCenter] setDelegate:_userNotificationDelegate];
-  }
+  _userNotificationDelegate = [[UserNotificationDelegate alloc] initWithRootViewController:self.window.rootViewController];
+  [[UNUserNotificationCenter currentNotificationCenter] setDelegate:_userNotificationDelegate];
 
   return YES;
 }

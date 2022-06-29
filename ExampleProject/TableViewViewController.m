@@ -22,7 +22,7 @@ NSString *const TVVCListReuseIdentifier = @"ListReuseIdentifier";
 }
 
 - (void)loadView {
-  SimpleTableView *simpleTableView = [[SimpleTableView alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+  SimpleTableView *simpleTableView = [[SimpleTableView alloc] initWithTableViewStyle:UITableViewStyleInsetGrouped];
   [simpleTableView.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:TVVCListReuseIdentifier];
   simpleTableView.sectionModels = [self _createSections];
   _simpleTableView = simpleTableView;
